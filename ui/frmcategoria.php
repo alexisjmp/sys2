@@ -126,7 +126,7 @@ if (!isset($_SESSION["usuario"])) {
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-xs-12">
                             <div class="row form-group ">
-                                    <div class="col-md-1 col-md-offset-3  col-xs-6 col-xs-offset-3">
+                                    <div class="col-md-1 col-md-offset-3  col-xs-6 col-xs-offset-4">
                                         <button type="button"  class="btn btn-info " data-toggle="modal" data-target="#myModal"
                                                 onclick="buscar_nombre()"> <span class="glyphicon glyphicon-search small"></span></button>
                                     </div>    
@@ -135,7 +135,7 @@ if (!isset($_SESSION["usuario"])) {
                             </div>    
                             <div class="row form-group ">
                                 
-                                    <label class="col-lg-3 col-md-3 col-xs-3 control-label" for="pres-nombre">Nombre</label>
+                                    <label class="col-lg-3 col-md-3 col-xs-4 control-label" for="pres-nombre">Nombre</label>
                                     <div class="col-md-6 col-xs-7">
                                         <input type="text" id="txtnombre" class="form-control" pattern="[A-Za-z]{0,12}" placeholder="ej. Bastian" required>
                                     </div>
@@ -146,7 +146,7 @@ if (!isset($_SESSION["usuario"])) {
                         <div class="row form-group">
 
                             <div class="form-group">    
-                                <label class="col-md-3 col-xs-3 control-label" for="pres-descripcion" >Descripcion</label>
+                                <label class="col-md-3 col-xs-4 control-label" for="pres-descripcion" >Descripcion</label>
                                 <div class="col-md-6 col-xs-7">
                                     <input type="text" id="txtdescrpcion" class="form-control " pattern="[A-Za-z0-9. _-]{0,50}"  required >
                                 </div>
@@ -155,7 +155,7 @@ if (!isset($_SESSION["usuario"])) {
                         <div class="row form-group">
                             
                             <div>
-                                <label class="col-md-3 col-xs-3 control-label" for="pres-descripcion" >Categoria</label>
+                                <label class="col-md-3 col-xs-4 control-label" for="pres-descripcion" >Categoria</label>
                         <div class="col-md-6 col-xs-7">
                         <select id="sel_categoria" class="form-control">
                             <option value=""></option>
@@ -167,7 +167,7 @@ if (!isset($_SESSION["usuario"])) {
                             </div>
                         </div>        
                         <div class="row">
-                            <div class="col-lg-5 col-sm-5 col-md-5  col-md-offset-4 col-xs-6 col-xs-offset-3">
+                            <div class="col-lg-5 col-sm-5 col-md-5  col-md-offset-4 col-xs-6 col-xs-offset-4">
                                 <div class="form-group ">   
                                     <button type="button"  class="btn btn-success " id="btn_prestacion"  data-toggle="tooltip" data-placement="right" title="Aceptar" onclick="ingresar_prestacion()"><span class="	glyphicon glyphicon-floppy-saved"></span></button>
                                     <button type="button"  class="btn btn-default" id="btn_prestacion"  data-toggle="tooltip" data-placement="right" title="Aceptar" onclick="limpiar()"><span class="glyphicon glyphicon-file"></span></button>
