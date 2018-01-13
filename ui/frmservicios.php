@@ -173,7 +173,7 @@
                                 <div class="row">
                                     <div class="col-sm-4 col-md-6  col-md-offset-4 col-xs-12">
                                         <div class="form-group ">   
-                                            <button type="button"  class="btn btn-success " id="btn_prestacion"  data-toggle="tooltip" data-placement="right" title="Aceptar" onclick="ingresar_prestacion()"><span class="	glyphicon glyphicon-ok"></span></button>
+                                            <button type="button"  class="btn btn-success " id="btn_prestacion"  data-toggle="tooltip" data-placement="right" title="Aceptar" onclick="ingresar_prestacion()"><span class="	glyphicon glyphicon-floppy-save"></span></button>
                                             <button type="button"  class="btn btn-default" id="btn_prestacion"  data-toggle="tooltip" data-placement="right" title="Aceptar" onclick="limpiar()"><span class="glyphicon glyphicon-file"></span></button>
                                         </div>           
                                     </div>
