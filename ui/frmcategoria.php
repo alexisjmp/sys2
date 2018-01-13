@@ -126,7 +126,7 @@ if (!isset($_SESSION["usuario"])) {
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-xs-12">
                             <div class="row form-group ">
-                                    <div class="col-md-1 col-md-offset-3  col-xs-12">
+                                    <div class="col-md-1 col-md-offset-3  col-xs-6 col-xs-offset-3">
                                         <button type="button"  class="btn btn-info " data-toggle="modal" data-target="#myModal"
                                                 onclick="buscar_nombre()"> <span class="glyphicon glyphicon-search small"></span></button>
                                     </div>    
