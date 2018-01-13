@@ -54,7 +54,7 @@ if (!isset($_SESSION["usuario"])) {
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
             <!--keypress-->
             <script>
-                function buscar_nombre //prueba categoria
+                function buscar_nombre ()//prueba categoria
                 {
                     data = '';
                     marco = 'marco_nombres';
