@@ -1,6 +1,6 @@
 <?
 session_start();
-require_once('../servicio/funciones_adicionales.php');
+//require_once('../servicio/funciones_adicionales.php');
 // Start the session
 
 date_default_timezone_set('America/Santiago');
@@ -24,7 +24,7 @@ if (!isset($_SESSION["usuario"])) {
     <head>
 
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-            <title>Prestacion</title>
+            <title>Categorias</title>
             <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -116,42 +116,60 @@ if (!isset($_SESSION["usuario"])) {
     </head>
     <body>
         
-        <label >haqui va el id</label >
+<!--        <label >haqui va el id</label >-->
 
         <div class="container">
             <div class="panel-group">
                 <div class="panel panel-info">
-                    <div class="panel-heading">Formulario de Prestaciones</div>        
+                    <div class="panel-heading">Formulario de Categorias</div>        
                     <div class="panel-body  ">
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-xs-12">
-                                
                             <div class="row form-group ">
-                                
-                                    <label class="col-lg-3 col-md-3 col-xs-12 control-label" for="pres-nombre">Nombre</label>
-                                    <div class="col-md-6 col-xs-12">
-                                        <input type="text" id="txtnombre" class="form-control" pattern="[A-Za-z]{0,12}" placeholder="ej. Bastian" required>
-                                    </div>
-                                    <div class="col-lg-2 col-md-3 col-xs-12">
+                                    <div class="col-md-1 col-md-offset-3  col-xs-12">
                                         <button type="button"  class="btn btn-info " data-toggle="modal" data-target="#myModal"
                                                 onclick="buscar_nombre()"> <span class="glyphicon glyphicon-search small"></span></button>
+                                    </div>    
+                            
+                                    
+                            </div>    
+                            <div class="row form-group ">
+                                
+                                    <label class="col-lg-3 col-md-3 col-xs-3 control-label" for="pres-nombre">Nombre</label>
+                                    <div class="col-md-6 col-xs-7">
+                                        <input type="text" id="txtnombre" class="form-control" pattern="[A-Za-z]{0,12}" placeholder="ej. Bastian" required>
                                     </div>
+                                    
                             </div>
                         
 
-                        <div class="row">
+                        <div class="row form-group">
 
                             <div class="form-group">    
-                                <label class="col-md-3 col-xs-12 control-label" for="pres-descripcion" >Descripcion</label>
-                                <div class="col-md-6 col-xs-12">
+                                <label class="col-md-3 col-xs-3 control-label" for="pres-descripcion" >Descripcion</label>
+                                <div class="col-md-6 col-xs-7">
                                     <input type="text" id="txtdescrpcion" class="form-control " pattern="[A-Za-z0-9. _-]{0,50}"  required >
                                 </div>
                             </div>
                         </div>
+                        <div class="row form-group">
+                            
+                            <div>
+                                <label class="col-md-3 col-xs-3 control-label" for="pres-descripcion" >Categoria</label>
+                        <div class="col-md-6 col-xs-7">
+                        <select id="sel_categoria" class="form-control">
+                            <option value=""></option>
+                            <option value="0">categoria 1</option>
+                            <option value="1">categoria 2</option>
+                            <option value="2">categoria 3</option>
+                        </select>
+                        </div>
+                            </div>
+                        </div>        
                         <div class="row">
-                            <div class="col-lg-4 col-sm-4 col-md-5  col-md-offset-3 col-xs-12">
+                            <div class="col-lg-5 col-sm-5 col-md-5  col-md-offset-4 col-xs-6 col-xs-offset-3">
                                 <div class="form-group ">   
-                                    <button type="button"  class="btn btn-success " id="btn_prestacion"  data-toggle="tooltip" data-placement="right" title="Aceptar" onclick="ingresar_prestacion()"><span class="	glyphicon glyphicon-ok"></span></button>
+                                    <button type="button"  class="btn btn-success " id="btn_prestacion"  data-toggle="tooltip" data-placement="right" title="Aceptar" onclick="ingresar_prestacion()"><span class="	glyphicon glyphicon-floppy-saved"></span></button>
                                     <button type="button"  class="btn btn-default" id="btn_prestacion"  data-toggle="tooltip" data-placement="right" title="Aceptar" onclick="limpiar()"><span class="glyphicon glyphicon-file"></span></button>
                                 </div>           
                             </div>
