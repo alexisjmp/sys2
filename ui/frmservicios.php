@@ -54,7 +54,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
         <!--keypress-->
         <script>
-            function buscar_nombre() //prueba
+            function buscar_nombre() //pruebaSeba
             {
                 data = '';
                 marco = 'marco_nombres';
