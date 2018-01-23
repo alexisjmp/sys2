@@ -83,8 +83,8 @@
                         <ul class="nav navbar-nav navbar-right" id="navbar-collapse-1">
                             <li><a href="#" class="navbar-link"><label id="lblusuario"><?php echo $_SESSION["usuario"]; ?></label></a></li>
                             <label id="test"></label>
-                            <input type="text" id="rut_usuario" value="<?php echo $_SESSION["rut"]; ?>" hidden>
-                                <li><button class="btn btn-default" onclick="cerrar()">cerrar sesion</button></li>
+                            <input type="text" id="rut_usuario" value="<?php echo $_SESSION["rut"]; ?>" hidden></input>
+                            <li><button class="btn btn-default" onclick="cerrar()">cerrar sesion</button></li>
                         </ul>
                     </div>
                 </div>
@@ -96,74 +96,63 @@
         <div class="container">
             <!--inicio panel-->
             <div class="panel-group">
-                <div class="col-md-10 col-md-offset-1 col-xs-6 ">
+                <div class="col-md-12 col-xs-12 ">
                     <div class=" panel panel-primary">    
                         <div class="panel-heading">Orden de  compra</div>    
                         <div class="panel-body">
                             <label id="" hidden></label>
                             <div class="row form-group">
-                                <label class="col-md-1">producto:</label>
-                                <div class="col-md-2">
-                                    <input class="form-control" type="text">
-                                </div>
-                                <div class="col-md-2">
+                                <div class="col-md-1">
                                     <button class="btn btn-info btn-md " id="myBtn"  data-toggle="modal" data-target="#MyModal" data-backdrop="true">
                                         <span class="glyphicon glyphicon-search"></span>
                                     </button>
                                 </div>
-                                <label class="col-md-1">codigo:</label>
-                                <div class="col-md-2">
-                                    <input class="form-control" type="text" disabled="">
-                                </div>
-                                <label class="col-md-1">precio:</label>
-                                <div class="col-md-2">
-                                    <input class="form-control" type="text" disabled="">
-                                </div>
                             </div>
+                            <!--                            <div class="row form-group">
+                                                            <label class="col-md-1">producto:</label>
+                                                            <div class="col-md-2">
+                                                                <input id="txt_producto" class="form-control" type="text" disabled="">
+                                                            </div>
+                                                            <label class="col-md-1">codigo:</label>
+                                                            <div class="col-md-2">
+                                                                <input id="txt_codigo" class="form-control" type="text" disabled="">
+                                                            </div>
+                                                            <label class="col-md-1">categoria:</label>
+                                                            <div class="col-md-2">
+                                                                <input id="txt_categoria" class="form-control" type="text" disabled="">
+                                                            </div>
+                                                            <label class="col-md-1">precio:</label>
+                                                            <div class="col-md-2">
+                                                                <input id="txt_valor" class="form-control" type="text" disabled="">
+                                                            </div>
+                                                        </div>-->
 
-                            <div class=" row form-group">
-                                <div class="col-md-4 col-md-offset-8  col-xs-6">
-                                    <button type="button" title="Aceptar"  class="btn btn-info "onclick=" agrega()"> <span  class="glyphicon glyphicon-ok small"></span>  agregar</button>
-                                    <button type="button" title=Limpiar"  class="btn btn-danger " onclick="limpiar()"> <span  class="glyphicon glyphicon-remove small"></span>  cancelar</button>
-                                </div>
-                            </div>
+                            <!--                            <div class=" row form-group">
+                                                            <div class="col-md-4 col-md-offset-8  col-xs-6">
+                                                                <button type="button" title="Aceptar"  class="btn btn-info "onclick=" agrega()"> <span  class="glyphicon glyphicon-ok small"></span>  agregar</button>
+                                                                <button type="button" title=Limpiar"  class="btn btn-danger " onclick="limpiar()"> <span  class="glyphicon glyphicon-remove small"></span>  cancelar</button>
+                                                            </div>
+                                                        </div>-->
 
                             <!--inicio tabla-->
-                            <div class="row form-group table-responsive" style="width: 910px; height: 200px; overflow-y: scroll;">
+                            <div class="row form-group " style="overflow-y: scroll;">
 
-                                <table class="table-bordered table-condensed">
+                                <table class="table table-bordered table-condensed">
                                     <thead class="">
                                         <tr>
                                             <td></td>
                                             <td></td>
                                             <td>Anular</td>
-                                            <td>Cantidad</td>
-                                            <td>Unidad</td>
+                                            <td>Cantidad</td>                               
                                             <td>Codigo</td>
-                                            <td>Nombre</td>
-                                            <td>Fecha Nacimiento</td>
-                                            <td>Descripcion</td>
-                                            <td>descuento</td>
+                                            <td>Nombre</td>                                
+                                            <td>categoria</td>
+                                            <td>Valor</td>
                                         </tr>
                                     </thead>
 
                                     <tbody>
-                                        <tr id="fila0">
-                                            <td> <span onclick="editar(this)"  class="glyphicon glyphicon-pencil small"></span> </td>
-                                            <td id="holas"><span onclick="remover(this)" class="glyphicon glyphicon-remove small"></span></td>
-                                            <td>   
-                                                <input  type="checkbox">
-                                            </td>
-                                            <td> 
-                                                <input id="txtfila0" type="text" style="width: 60" disabled="" value="hola">     
-                                            </td>
-                                            <td>caja/24</td>
-                                            <td>002000000000001</td>
-                                            <td>Escobas y guantes</td>
-                                            <td>27/08/2009</td>
-                                            <td>utiles de aseo</td>
-                                            <td> 2</td>
-                                        </tr>
+
                                     </tbody>
                                 </table>
 
@@ -183,6 +172,55 @@
             <!--fin panel-->
         </div>
 
+        <div class="modal fade" id="MyModal"  role="dialog">
+            <div class="modal-dialog modal-lg">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Productos</h4>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="row form-group">
+                            <label class="col-md-1">Nombre:</label>
+                            <div class="col-md-2">
+                                <input class="form-control" type="text" >
+                            </div>
+                            <label class="col-md-1">categoria:</label>
+                            <div class="col-md-2">
+                                <select class="form-control">
+                                    <option> cat1 </option>
+                                    <option> cat2 </option>
+                                    <option> cat3 </option>
+                                </select>
+                            </div>
+                           
+                                <label class="col-md-1">codigo:</label>
+                                <div class="col-md-2">
+                                    <input id="txt_codigo" class="form-control" type="text" >
+                                </div>
+
+                            
+                        </div>
+                        <div id="marco_productos">
+
+                        </div>  
+
+                        <div class="modal-footer">
+                            <button class="btn btn-primary" onclick="agrega()">agregar</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
         <script>
             var num_fila = 1;
 
@@ -199,7 +237,10 @@
             function agrega()
             {
                 alert(num_fila);
-                valor = $("#txt_descuento").val();
+                nombre = $("#txt_producto").val();
+                codigo = $("#txt_codigo").val();
+                valor = $("#txt_valor").val();
+                cat = $("#txt_categoria").val();
                 cantidad = parseInt(valor);
                 $("tbody").append("<tr id='fila" + num_fila + "'>" +
                         "<td> <span onclick='editar(this)'  class='glyphicon glyphicon-pencil small'></span></td>" +
@@ -207,12 +248,10 @@
                         "<td>" +
                         "<input type='checkbox'>" +
                         "</td>" +
-                        "<td><input id='txtfila" + num_fila + "' type='text' style='width: 60' disabled></td>" +
-                        "<td>caja/24</td>" +
-                        "<td>002000000000001</td>" +
-                        "<td>Escobas y guantes</td>" +
-                        "<td>27/08/2009</td>" +
-                        "<td>utiles de aseo</td>" +
+                        "<td><input id='txtfila" + num_fila + "' type='text'  disabled></td>" +
+                        "<td>" + codigo + "</td>" +
+                        "<td>" + nombre + "</td>" +
+                        "<td>" + cat + "</td>" +
                         "<td><input id='txtdescuentofila" + num_fila + "' type='text' style='width: 60' value=" + cantidad + " disabled></td>" +
                         "</tr>");
                 num_fila++;
