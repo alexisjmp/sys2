@@ -107,7 +107,9 @@
                                     <input class="form-control" type="text">
                                 </div>
                                 <div class="col-md-2">
-                                    <button class="form-control">buscar</button>
+                                    <button class="btn btn-info btn-md " id="myBtn"  data-toggle="modal" data-target="#MyModal" data-backdrop="true">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
                                 </div>
                                 <label class="col-md-1">codigo:</label>
                                 <div class="col-md-2">
