@@ -135,7 +135,7 @@
                                                         </div>-->
 
                             <!--inicio tabla-->
-                            <div class="row form-group " style="overflow-y: scroll;">
+                            <div class="row form-group " style="height: 300px; overflow-y: scroll;">
 
                                 <table class="table table-bordered table-condensed">
                                     <thead class="">
