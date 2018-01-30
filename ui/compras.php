@@ -239,6 +239,7 @@ require_once '../funciones/listservicios_1.php';
             }
             function agrega()
             {
+                //hola
                 var servicio_tomado = new Array();
                 i = 0;
                 $("#btable tr").each(function () {
