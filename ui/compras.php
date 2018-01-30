@@ -1,4 +1,5 @@
 <?php
+require_once '../funciones/listservicios_1.php';
 //session_start();
 ////require_once('../servicio/funciones_adicionales.php');
 //// Start the session
@@ -151,7 +152,7 @@
                                         </tr>
                                     </thead>
 
-                                    <tbody>
+                                    <tbody id="tabla">
 
                                     </tbody>
                                 </table>
@@ -204,8 +205,8 @@
 
                             
                         </div>
-                        <div id="marco_productos">
-
+                        <div class="row form-group" id="marco_productos">
+<? listarconfirmados(); ?>
                         </div>  
 
                         <div class="modal-footer">
@@ -224,6 +225,8 @@
         <script>
             var num_fila = 1;
 
+
+            
             function calcular_total() {
 
                 importe_total = 0
@@ -242,7 +245,7 @@
                 valor = $("#txt_valor").val();
                 cat = $("#txt_categoria").val();
                 cantidad = parseInt(valor);
-                $("tbody").append("<tr id='fila" + num_fila + "'>" +
+                $("#tabla").append("<tr id='fila" + num_fila + "'>" +
                         "<td> <span onclick='editar(this)'  class='glyphicon glyphicon-pencil small'></span></td>" +
                         "<td><span onclick='remover(this)' class='glyphicon glyphicon-remove small'></span></td>" +
                         "<td>" +
