@@ -164,7 +164,7 @@ require_once '../funciones/listservicios_1.php';
                             </div>
 
                             <div class="row form-group">
-                                <label for="total">Total: <input type="text" id="total" value="0"> </label>
+                                <label for="total">Total: <input type="text" id="total" value="0" disabled> </label>
                             </div>
                         </div>
                     </div>
@@ -256,16 +256,27 @@ require_once '../funciones/listservicios_1.php';
 
                 return servicio;
             }
-
+            
+            function total_service(){
+                //servicio = new Array();
+                totale = 0;
+                $("#btabla tr").each(function () {
+                   totale =  parseInt($(this).children("td:nth-child(4)").children("input:text").val())* parseInt($(this).children("td:nth-child(8)").children("input:text").val())+ totale;
+               
+                });
+                alert(totale);
+                $("#total").val(totale);
+            }
             function agrega()
             {
                 bandera = 0;
                 var servicio_tomado = seleccion_servicios();
                 nombre = $("#txt_producto").val();
                 codigo = $("#txt_codigo").val();
-                valor = $("#txt_valor").val();
+                //valor = $("#txt_valor").val();
                 cat = $("#txt_categoria").val();
-                cantidad = parseInt(valor);
+                //cantidad = parseInt(valor);
+                total = 0;
                 for (j = 0; j < servicio_tomado.length; j++) {
                     $("#btabla tr").each(function () {
                         if ($(this).children("td:nth-child(5)").text() === servicio_tomado[j][0])
@@ -279,21 +290,25 @@ require_once '../funciones/listservicios_1.php';
                      alert("servicio "+servicio_tomado[j][1]+" existe por favor editelo");
                     else
                     {
+                        cantidad = parseInt(servicio_tomado[j][3]);
                         $("#btabla").append("<tr id='fila" + num_fila + "'>" +
                                 "<td> <span onclick='editar(this)'  class='glyphicon glyphicon-pencil small'></span></td>" +
                                 "<td><span onclick='remover(this)' class='glyphicon glyphicon-remove small'></span></td>" +
                                 "<td>" +
                                 "<input type='checkbox'>" +
                                 "</td>" +
-                                "<td><input id='txtfila" + num_fila + "' type='text' value='1' disabled></td>" +
+                                "<td><input id='txtfila" + num_fila + "' type='text' onblur='total_service()' value='1' disabled></td>" +
                                 "<td>" + servicio_tomado[j][0] + "</td>" +
                                 "<td>" + servicio_tomado[j][1] + "</td>" +
                                 "<td>" + servicio_tomado[j][2] + "</td>" +
-                                "<td><input id='txtdescuentofila" + num_fila + "' type='text'  value=" + servicio_tomado[j][3] + " disabled></td>" +
+                                "<td><input id='txtdescuentofila" + num_fila + "' type='text'  value=" +cantidad + " disabled></td>" +
                                 "</tr>");
                         num_fila++;
-                        calcular_total();
-                        $("#txt_descuento").val('0');
+                        //calcular_total();
+                        //$("#txt_descuento").val('0');
+                        total_service();
+                        //total = total + cantidad;
+                        
                     }
                     bandera = 0;
                 }
@@ -305,14 +320,11 @@ require_once '../funciones/listservicios_1.php';
             {
                 fila_id = elemento.parentNode.parentNode.id;
                 alert(fila_id);
-                resta = $("#txtdescuento" + fila_id).val();
-                restaint = parseInt(resta);
-                importe_total = eval($("#total").val()) - restaint;
-                $("#total").val(importe_total);
+                
 
 
                 $("#" + fila_id).remove();
-
+                total_service();
             }
 
             function editar(elemento)
@@ -320,6 +332,7 @@ require_once '../funciones/listservicios_1.php';
                 alert("hola00");
                 fila_id = elemento.parentNode.parentNode.id;
                 $("#txt" + fila_id).attr('disabled', false);
+                
 
 
 
@@ -327,6 +340,42 @@ require_once '../funciones/listservicios_1.php';
                 //$($("#"+fila_id).eq(3)+":input").prop( "disabled", false ); 
                 //$('ul li').eq(5); 
             }
+            function unit(elemento){
+                fila_id = elemento.parentNode.parentNode.id;
+               unitario = parseInt($("#txt"+ fila_id).val());
+                cantidad = parseInt($("#txtdescuento"+ fila_id).val()); 
+                total = unitario * cantidad;
+                
+                //alert(unitario);
+                //alert(cantidad);
+                //alert( total);
+                 $("#total").val(total); 
+                 // CALCULO  DE CANTIDAD PARA MODIFICAR AL VALOR
+                 
+                 importe_total = 0;
+                
+                            
+                            suma1 = parseInt($("#txtdescuento"+ fila_id).val());
+                            suma2 = parseInt($("#total").val());
+                            alert(suma2);
+                            alert(cantidad);
+                            alert(total);
+                            importe_total =  suma2-cantidad+total  ;
+                
+                //impuesto = parseFloat(importe_total * 0.19) + importe_total;
+                //alert(impuesto);
+                        
+                            
+               
+                $("#total").val(importe_total);
+               // $("#impuesto").val(impuesto);
+               // AQUI HACE EL CALCULO TOTAL
+               
+              $("#txt"+ fila_id).attr("disabled",true);
+               
+                 
+        
+    }
 
         </script>
 
