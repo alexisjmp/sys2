@@ -197,16 +197,16 @@ require_once '../funciones/listservicios_1.php';
                                     <option> cat3 </option>
                                 </select>
                             </div>
-                           
-                                <label class="col-md-1">codigo:</label>
-                                <div class="col-md-2">
-                                    <input id="txt_codigo" class="form-control" type="text" >
-                                </div>
 
-                            
+                            <label class="col-md-1">codigo:</label>
+                            <div class="col-md-2">
+                                <input id="txt_codigo" class="form-control" type="text" >
+                            </div>
+
+
                         </div>
                         <div class="row form-group" id="marco_productos">
-<? listarconfirmados(); ?>
+                            <? listarconfirmados(); ?>
                         </div>  
 
                         <div class="modal-footer">
@@ -226,7 +226,7 @@ require_once '../funciones/listservicios_1.php';
             var num_fila = 1;
 
 
-            
+
             function calcular_total() {
 
                 importe_total = 0
@@ -239,27 +239,42 @@ require_once '../funciones/listservicios_1.php';
             }
             function agrega()
             {
+                var servicio_tomado = new Array();
+                i = 0;
+                $("#btable tr").each(function () {
+                    if ($(this).children("td:nth-child(1)").children("input:checkbox").is(':checked')) {
+                        id_servicio = $(this).children("td:nth-child(3)").text();
+                        nombre_servicio = $(this).children("td:nth-child(4)").text();
+                        categoria_servicio = $(this).children("td:nth-child(5)").text();
+                        servicio_tomado[i] = new Array(id_servicio, nombre_servicio, categoria_servicio);
+                        alert(servicio_tomado[i][0] + servicio_tomado[i][1] + servicio_tomado[i][2]);
+                        i++;
+                    }
+
+                });
                 alert(num_fila);
                 nombre = $("#txt_producto").val();
                 codigo = $("#txt_codigo").val();
                 valor = $("#txt_valor").val();
                 cat = $("#txt_categoria").val();
                 cantidad = parseInt(valor);
-                $("#tabla").append("<tr id='fila" + num_fila + "'>" +
-                        "<td> <span onclick='editar(this)'  class='glyphicon glyphicon-pencil small'></span></td>" +
-                        "<td><span onclick='remover(this)' class='glyphicon glyphicon-remove small'></span></td>" +
-                        "<td>" +
-                        "<input type='checkbox'>" +
-                        "</td>" +
-                        "<td><input id='txtfila" + num_fila + "' type='text'  disabled></td>" +
-                        "<td>" + codigo + "</td>" +
-                        "<td>" + nombre + "</td>" +
-                        "<td>" + cat + "</td>" +
-                        "<td><input id='txtdescuentofila" + num_fila + "' type='text' style='width: 60' value=" + cantidad + " disabled></td>" +
-                        "</tr>");
-                num_fila++;
-                calcular_total();
-                $("#txt_descuento").val('0');
+                for (var j = 0; j <= servicio_tomado.length; j++) {
+                    $("#tabla").append("<tr id='fila" + num_fila + "'>" +
+                            "<td> <span onclick='editar(this)'  class='glyphicon glyphicon-pencil small'></span></td>" +
+                            "<td><span onclick='remover(this)' class='glyphicon glyphicon-remove small'></span></td>" +
+                            "<td>" +
+                            "<input type='checkbox'>" +
+                            "</td>" +
+                            "<td><input id='txtfila" + num_fila + "' type='text'  disabled></td>" +
+                            "<td>" + servicio_tomado[j][0] + "</td>" +
+                            "<td>" + servicio_tomado[j][1] + "</td>" +
+                            "<td>" + servicio_tomado[j][2] + "</td>" +
+                            "<td><input id='txtdescuentofila" + num_fila + "' type='text'  value=" + cantidad + " disabled></td>" +
+                            "</tr>");
+                    num_fila++;
+                    calcular_total();
+                    $("#txt_descuento").val('0');
+                }
             }
 
 
