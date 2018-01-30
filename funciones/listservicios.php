@@ -40,7 +40,7 @@ function listarconfirmados(){
  <tr  class="traltura">
      <td><?php echo ($i+1);?></td>
  
-    <td><?php echo $nodo->arrservicio[$i]['id_nombre'] ;?></td>
+    <td><?php echo $nodo->arrservicio[$i]['id_servicio'] ;?></td>
     <td><?php echo $nodo->arrservicio[$i]['nombre_servicio'] ;?></td>
      <td><?php echo $nodo->arrservicio[$i]['nombre_categoria'] ;?></td>
  </tr>
