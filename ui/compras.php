@@ -152,7 +152,7 @@ require_once '../funciones/listservicios_1.php';
                                         </tr>
                                     </thead>
 
-                                    <tbody id="tabla">
+                                    <tbody id="btabla">
 
                                     </tbody>
                                 </table>
@@ -237,45 +237,67 @@ require_once '../funciones/listservicios_1.php';
                 );
                 $("#total").val(importe_total);
             }
-            function agrega()
+
+            function seleccion_servicios()
             {
-                //hola
-                var servicio_tomado = new Array();
+                servicio = new Array();
                 i = 0;
                 $("#btable tr").each(function () {
                     if ($(this).children("td:nth-child(1)").children("input:checkbox").is(':checked')) {
                         id_servicio = $(this).children("td:nth-child(3)").text();
                         nombre_servicio = $(this).children("td:nth-child(4)").text();
                         categoria_servicio = $(this).children("td:nth-child(5)").text();
-                        servicio_tomado[i] = new Array(id_servicio, nombre_servicio, categoria_servicio);
-                        alert(servicio_tomado[i][0] + servicio_tomado[i][1] + servicio_tomado[i][2]);
+                        valor_servicio = $(this).children("td:nth-child(6)").text();
+                        servicio[i] = new Array(id_servicio, nombre_servicio, categoria_servicio,valor_servicio);
                         i++;
                     }
 
                 });
-                alert(num_fila);
+
+                return servicio;
+            }
+
+            function agrega()
+            {
+                bandera = 0;
+                var servicio_tomado = seleccion_servicios();
                 nombre = $("#txt_producto").val();
                 codigo = $("#txt_codigo").val();
                 valor = $("#txt_valor").val();
                 cat = $("#txt_categoria").val();
                 cantidad = parseInt(valor);
-                for (var j = 0; j <= servicio_tomado.length; j++) {
-                    $("#tabla").append("<tr id='fila" + num_fila + "'>" +
-                            "<td> <span onclick='editar(this)'  class='glyphicon glyphicon-pencil small'></span></td>" +
-                            "<td><span onclick='remover(this)' class='glyphicon glyphicon-remove small'></span></td>" +
-                            "<td>" +
-                            "<input type='checkbox'>" +
-                            "</td>" +
-                            "<td><input id='txtfila" + num_fila + "' type='text'  disabled></td>" +
-                            "<td>" + servicio_tomado[j][0] + "</td>" +
-                            "<td>" + servicio_tomado[j][1] + "</td>" +
-                            "<td>" + servicio_tomado[j][2] + "</td>" +
-                            "<td><input id='txtdescuentofila" + num_fila + "' type='text'  value=" + cantidad + " disabled></td>" +
-                            "</tr>");
-                    num_fila++;
-                    calcular_total();
-                    $("#txt_descuento").val('0');
+                for (j = 0; j < servicio_tomado.length; j++) {
+                    $("#btabla tr").each(function () {
+                        if ($(this).children("td:nth-child(5)").text() === servicio_tomado[j][0])
+                        {
+                           
+                            bandera = 1;
+                        }
+
+                    });
+                    if(bandera == 1)
+                     alert("servicio "+servicio_tomado[j][1]+" existe por favor editelo");
+                    else
+                    {
+                        $("#btabla").append("<tr id='fila" + num_fila + "'>" +
+                                "<td> <span onclick='editar(this)'  class='glyphicon glyphicon-pencil small'></span></td>" +
+                                "<td><span onclick='remover(this)' class='glyphicon glyphicon-remove small'></span></td>" +
+                                "<td>" +
+                                "<input type='checkbox'>" +
+                                "</td>" +
+                                "<td><input id='txtfila" + num_fila + "' type='text' value='1' disabled></td>" +
+                                "<td>" + servicio_tomado[j][0] + "</td>" +
+                                "<td>" + servicio_tomado[j][1] + "</td>" +
+                                "<td>" + servicio_tomado[j][2] + "</td>" +
+                                "<td><input id='txtdescuentofila" + num_fila + "' type='text'  value=" + servicio_tomado[j][3] + " disabled></td>" +
+                                "</tr>");
+                        num_fila++;
+                        calcular_total();
+                        $("#txt_descuento").val('0');
+                    }
+                    bandera = 0;
                 }
+
             }
 
 
