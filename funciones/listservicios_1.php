@@ -7,14 +7,13 @@
 require_once('../negocio/reglasdatos.php');
  
 
-
 listarconfirmados();
 
+
+
 function listarconfirmados(){
-    // $nodo = new cls_servicio();
-   //  unset($nodo->arrservicio);
-   //  $nodo->select();
-     $arrservicio= listaservicios()
+
+     $arrservicio=msolistaservicios();
   	?>
                         
      <label> : </label> <label id="">  
