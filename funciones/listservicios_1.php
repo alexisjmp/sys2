@@ -27,7 +27,7 @@ function listarconfirmados() {
                     <th>id</th>
                     <th>Nombre</th>
                     <th>Categoria</th>
-
+                    <th>
                 </tr>
             </thead>
             <tbody id="btable" class="table-body">             
@@ -42,6 +42,7 @@ function listarconfirmados() {
                         <td><?php echo $arrservicio[$i]['id_servicio']; ?></td>
                         <td><?php echo $arrservicio[$i]['nombre_servicio']; ?></td>
                         <td><?php echo $arrservicio[$i]['nombre_categoria']; ?></td>
+                        <td><?php echo $arrservicio[$i]['precio']; ?></td>
                     </tr>
 
     <?php } ?>
