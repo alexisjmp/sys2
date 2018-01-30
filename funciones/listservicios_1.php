@@ -30,7 +30,7 @@ function listarconfirmados() {
 
                 </tr>
             </thead>
-            <tbody class="table-body">             
+            <tbody id="btable" class="table-body">             
     <?php
     for ($i = 0; $i < count($arrservicio); $i++) {
 ;
