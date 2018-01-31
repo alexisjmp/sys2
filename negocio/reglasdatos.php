@@ -5,6 +5,9 @@ require_once('../clases/cls_servicio.php');
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+// **********************
+// SERVICIO
+// **********************
 if($_POST['funcion']== 'listaservicios')
    listaservicios(); 
 if($_POST['funcion']== 'buscaservicios')
@@ -17,6 +20,16 @@ if($_POST['funcion']== 'miiservicio')
    miiservicio();
 if($_POST['munservicio']== 'dnneleminaservicio')
    dnneleminaservicio();
+// **********************
+// CLIENTE
+// **********************
+if($_POST['funcion']== 'miicliente')
+   miicliente();
+if($_POST['funcion']== 'muncliente')
+   muncliente();
+if($_POST['funcion']== 'mdncliente')
+   mdncliente();
+
 // **********************
 // SERVICIO
 // **********************
