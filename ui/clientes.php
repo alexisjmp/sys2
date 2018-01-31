@@ -281,15 +281,13 @@ if (!isset($_SESSION["usuario"])) {
             <div class="panel-body">
             <label id="" hidden></label>
                 <div class="row form-group">
-                    <div class="col-md-4 col-md-offset-1 col-xs-12 row">
-                        <label class=" col-md-4 col-xs-10 control-label " for="rut">R.U.T :</label>
-                        <div class="col-md-5 col-xs-8 row ">
+                    <div class="col-md-4 col-md-offset-1 col-xs-12 row ">
+                        <label class=" col-md-5 col-xs-10 control-label " for="rut">R.U.T :</label>
+                        <div class="col-md-5  1 col-xs-8 row ">
                             <input type="text" id="txt_rut" class="form-control"   placeholder="9999999" pattern="\d{3,8}" required > 
                         </div>
-                        <div class="col-md-1 col-xs-1 ">
-                           <span class="input-lg ">-</span> 
-                        </div>
-                        <div class="col-md-3 col-xs-4 ">
+                        <label class=" col-md-1 col-xs-1 control-label " >-</label>
+                        <div class="col-md-3 col-xs-4 row">
                             <input type="text-inline" id="txt_verificador" class="form-control" placeholder="9"    pattern="\d|kK{1}" required >  
                         </div>   
                     </div>
