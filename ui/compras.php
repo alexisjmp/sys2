@@ -187,11 +187,11 @@ require_once '../funciones/listservicios_1.php';
                         <div class="row form-group">
                             <label class="col-md-1">Nombre:</label>
                             <div class="col-md-2">
-                                <input class="form-control" type="text" >
+                                <input  id="nombre_service" class="form-control" type="text" >
                             </div>
                             <label class="col-md-1">categoria:</label>
                             <div class="col-md-2">
-                                <select class="form-control">
+                                <select id="sel_service" class="form-control">
                                     <option> cat1 </option>
                                     <option> cat2 </option>
                                     <option> cat3 </option>
@@ -200,7 +200,7 @@ require_once '../funciones/listservicios_1.php';
 
                             <label class="col-md-1">codigo:</label>
                             <div class="col-md-2">
-                                <input id="txt_codigo" class="form-control" type="text" >
+                                    <input id="cod_service" class="form-control" type="text" >
                             </div>
 
 
@@ -210,7 +210,7 @@ require_once '../funciones/listservicios_1.php';
                         </div>  
 
                         <div class="modal-footer">
-                            <button class="btn btn-primary" onclick="agrega()">agregar</button>
+                            <button class="btn btn-primary" onclick="agrega()" data-dismiss="modal">agregar</button>
                             <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                         </div>
 
@@ -248,7 +248,7 @@ require_once '../funciones/listservicios_1.php';
                         nombre_servicio = $(this).children("td:nth-child(4)").text();
                         categoria_servicio = $(this).children("td:nth-child(5)").text();
                         valor_servicio = $(this).children("td:nth-child(6)").text();
-                        servicio[i] = new Array(id_servicio, nombre_servicio, categoria_servicio,valor_servicio);
+                        servicio[i] = new Array(id_servicio, nombre_servicio, categoria_servicio, valor_servicio);
                         i++;
                     }
 
@@ -256,36 +256,36 @@ require_once '../funciones/listservicios_1.php';
 
                 return servicio;
             }
-            
-            function numeros(e){
+
+            function numeros(e) {
                 key = e.keyCode || e.which;
                 tecla = String.fromCharCode(key).toLowerCase();
                 letras = " 0123456789";
-                especiales = [8,37,39,46];
+                especiales = [8, 37, 39, 46];
 
                 tecla_especial = false
-                for(var i in especiales){
-                    if(key == especiales[i]){
-                tecla_especial = true;
-                 break;
-                    } 
+                for (var i in especiales) {
+                    if (key == especiales[i]) {
+                        tecla_especial = true;
+                        break;
+                    }
                 }
- 
-                if(letras.indexOf(tecla)==-1 && !tecla_especial)
-                return false;
+
+                if (letras.indexOf(tecla) == -1 && !tecla_especial)
+                    return false;
             }
-            
-            function total_service(){
+
+            function total_service() {
                 //servicio = new Array();
                 totale = 0;
                 $("#btabla tr").each(function () {
-                   totale =  parseInt($(this).children("td:nth-child(4)").children("input:text").val())* parseInt($(this).children("td:nth-child(8)").children("input:text").val())+ totale;
-               
+                    totale = parseInt($(this).children("td:nth-child(4)").children("input:text").val()) * parseInt($(this).children("td:nth-child(8)").children("input:text").val()) + totale;
+                    $(this).children("td:nth-child(4)").children("input:text").prop('disabled', true);
                 });
                 alert(totale);
                 $("#total").val(totale);
-                $("#txt" + fila_id).attr('disabled', true);
-                
+                //$("#txt" + fila_id).attr('disabled', true);
+
             }
             function agrega()
             {
@@ -301,13 +301,13 @@ require_once '../funciones/listservicios_1.php';
                     $("#btabla tr").each(function () {
                         if ($(this).children("td:nth-child(5)").text() === servicio_tomado[j][0])
                         {
-                           
+
                             bandera = 1;
                         }
 
                     });
-                    if(bandera == 1)
-                     alert("servicio "+servicio_tomado[j][1]+" existe por favor editelo");
+                    if (bandera == 1)
+                        alert("servicio " + servicio_tomado[j][1] + " existe por favor editelo");
                     else
                     {
                         cantidad = parseInt(servicio_tomado[j][3]);
@@ -321,18 +321,18 @@ require_once '../funciones/listservicios_1.php';
                                 "<td>" + servicio_tomado[j][0] + "</td>" +
                                 "<td>" + servicio_tomado[j][1] + "</td>" +
                                 "<td>" + servicio_tomado[j][2] + "</td>" +
-                                "<td><input id='txtdescuentofila" + num_fila + "' type='text'  value=" +cantidad + " disabled></td>" +
+                                "<td><input id='txtdescuentofila" + num_fila + "' type='text'  value=" + cantidad + " disabled></td>" +
                                 "</tr>");
                         num_fila++;
                         //calcular_total();
                         //$("#txt_descuento").val('0');
                         total_service();
                         //total = total + cantidad;
-                        
+
                     }
                     bandera = 0;
                 }
-
+limpiar_modal();
             }
 
 
@@ -340,7 +340,7 @@ require_once '../funciones/listservicios_1.php';
             {
                 fila_id = elemento.parentNode.parentNode.id;
                 alert(fila_id);
-                
+
 
 
                 $("#" + fila_id).remove();
@@ -352,16 +352,20 @@ require_once '../funciones/listservicios_1.php';
                 alert("hola00");
                 fila_id = elemento.parentNode.parentNode.id;
                 $("#txt" + fila_id).attr('disabled', false);
-                
-
-
-
                 //alert(($($("#"+fila_id).eq(3))+":input").val());
                 //$($("#"+fila_id).eq(3)+":input").prop( "disabled", false ); 
                 //$('ul li').eq(5); 
             }
-            
 
+            function limpiar_modal()
+            {
+                $("#btable tr").each(function () {
+                    $(this).children("td:nth-child(1)").children("input:checkbox").prop('checked', false);
+                    $('#nombre_service').val('');
+                    $('#cod_service').val('');
+                    $('#sel_service').val('');
+                });
+            }
         </script>
 
     </body>
