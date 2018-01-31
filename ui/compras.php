@@ -166,6 +166,9 @@ require_once '../funciones/listservicios_1.php';
                             <div class="row form-group">
                                 <label for="total">Total: <input type="text" id="total" value="0" disabled> </label>
                             </div>
+                            <div class="col-md-6 col-xs-6">
+                                <button class="btn btn-success"  data-dismiss="modal"><i class="fa fa-file-pdf-o"></i> Pdf</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -332,7 +335,7 @@ require_once '../funciones/listservicios_1.php';
                     }
                     bandera = 0;
                 }
-limpiar_modal();
+            limpiar_modal();
             }
 
 
