@@ -257,6 +257,24 @@ require_once '../funciones/listservicios_1.php';
                 return servicio;
             }
             
+            function numeros(e){
+                key = e.keyCode || e.which;
+                tecla = String.fromCharCode(key).toLowerCase();
+                letras = " 0123456789";
+                especiales = [8,37,39,46];
+
+                tecla_especial = false
+                for(var i in especiales){
+                    if(key == especiales[i]){
+                tecla_especial = true;
+                 break;
+                    } 
+                }
+ 
+                if(letras.indexOf(tecla)==-1 && !tecla_especial)
+                return false;
+            }
+            
             function total_service(){
                 //servicio = new Array();
                 totale = 0;
@@ -266,6 +284,8 @@ require_once '../funciones/listservicios_1.php';
                 });
                 alert(totale);
                 $("#total").val(totale);
+                $("#txt" + fila_id).attr('disabled', true);
+                
             }
             function agrega()
             {
@@ -297,7 +317,7 @@ require_once '../funciones/listservicios_1.php';
                                 "<td>" +
                                 "<input type='checkbox'>" +
                                 "</td>" +
-                                "<td><input id='txtfila" + num_fila + "' type='text' onblur='total_service()' value='1' disabled></td>" +
+                                "<td><input id='txtfila" + num_fila + "' type='text' onblur='total_service()' onKeyPress='return numeros(event)' value='1' disabled></td>" +
                                 "<td>" + servicio_tomado[j][0] + "</td>" +
                                 "<td>" + servicio_tomado[j][1] + "</td>" +
                                 "<td>" + servicio_tomado[j][2] + "</td>" +
@@ -340,42 +360,7 @@ require_once '../funciones/listservicios_1.php';
                 //$($("#"+fila_id).eq(3)+":input").prop( "disabled", false ); 
                 //$('ul li').eq(5); 
             }
-            function unit(elemento){
-                fila_id = elemento.parentNode.parentNode.id;
-               unitario = parseInt($("#txt"+ fila_id).val());
-                cantidad = parseInt($("#txtdescuento"+ fila_id).val()); 
-                total = unitario * cantidad;
-                
-                //alert(unitario);
-                //alert(cantidad);
-                //alert( total);
-                 $("#total").val(total); 
-                 // CALCULO  DE CANTIDAD PARA MODIFICAR AL VALOR
-                 
-                 importe_total = 0;
-                
-                            
-                            suma1 = parseInt($("#txtdescuento"+ fila_id).val());
-                            suma2 = parseInt($("#total").val());
-                            alert(suma2);
-                            alert(cantidad);
-                            alert(total);
-                            importe_total =  suma2-cantidad+total  ;
-                
-                //impuesto = parseFloat(importe_total * 0.19) + importe_total;
-                //alert(impuesto);
-                        
-                            
-               
-                $("#total").val(importe_total);
-               // $("#impuesto").val(impuesto);
-               // AQUI HACE EL CALCULO TOTAL
-               
-              $("#txt"+ fila_id).attr("disabled",true);
-               
-                 
-        
-    }
+            
 
         </script>
 
