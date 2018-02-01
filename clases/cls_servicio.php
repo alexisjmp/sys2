@@ -142,9 +142,9 @@ function busquedaservicios(){
   
   $search = $search.'%';  
   if($opc == 1)
-       $sql = "select * from servicio s left join categoria c where  s.nombre_servicio LIKE '$search' and  s.estado_servicio > 0 order by s.nombre_servicio asc" ; 
+       $sql = "select * from servicio s left join categoria c on s.id_categoria = c.id_categoria where  s.nombre_servicio LIKE '$search' and  s.estado_servicio > 0 order by s.nombre_servicio asc" ; 
   else  if($opc == 2)
-       $sql = "select * from servicio s left join categoria c where  s.id_categoria = '$id_categoria' and  s.estado_servicio > 0  order by s.nombre_servicio asc" ; 
+       $sql = "select * from servicio s left join categoria c  on s.id_categoria = c.id_categoria  where  s.id_categoria = '$id_categoria' and  s.estado_servicio > 0  order by s.nombre_servicio asc" ; 
  
   $resultado = $this->database->consulta($sql);
   $i=0;
