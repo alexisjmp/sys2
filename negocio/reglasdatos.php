@@ -66,10 +66,11 @@ function msolistaservicios(){
      return $nodo->arrservicio;
    
 }
-function msobuscaservicios($opc, $nombre_servicio, $id_categoria){
+function msobuscaservicios($opc, $nombre_servicio, $id_categoria, $id_servicio){
      $nodo = new cls_servicio();
      $nodo->setopc($opc);
      $nodo->setnombre_servicio($nombre_servicio);
+     $nodo->setid_servicio($id_servicio);
      $nodo->setid_categoria($id_categoria);
      $nodo->busquedaservicios();
      //$myJSON = json_encode($nodo->arrservicio);
