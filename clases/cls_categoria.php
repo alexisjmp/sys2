@@ -34,6 +34,7 @@ var $id_categoria;   // KEY ATTR. WITH AUTOINCREMENT
 var $cat_id_categoria;   // (normal Attribute)
 var $nombre_categoria;   // (normal Attribute)
 var $descripcion_categoria;   // (normal Attribute)
+var $arrcategoria;
 
 var $database; // Instance of class database
 
@@ -104,23 +105,20 @@ $this->descripcion_categoria =  $val;
 // SELECT METHOD / LOAD
 // **********************
 
-function select($id)
+function select()
 {
 
-$sql =  "SELECT * FROM categoria WHERE id_categoria = $id;";
+$sql =  "SELECT * FROM categoria order by nombre_categoria;";
 $result =  $this->database->consulta($sql);
-$result = $this->database->result;
-$row = mysql_fetch_object($result);
+$i=0;
+while($row = $this->database->fetch_array($result)){
 
-
-$this->id_categoria = $row->id_categoria;
-
-$this->cat_id_categoria = $row->cat_id_categoria;
-
-$this->nombre_categoria = $row->nombre_categoria;
-
-$this->descripcion_categoria = $row->descripcion_categoria;
-
+    $this->arrcategoria[$i]['id_categoria'] = $row->id_categoria;
+    $this->arrcategoria[$i]['cat_id_categoria'] = $row->cat_id_categoria;
+    $this->arrcategoria[$i]['nombre_categoria'] = $row->nombre_categoria;
+    $this->arrcategoria[$i]['descripcion_categoria'] = $row->descripcion_categoria;
+    $i++;
+}
 }
 
 // **********************
