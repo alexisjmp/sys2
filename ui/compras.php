@@ -1,5 +1,5 @@
 <?php
-require_once '../funciones/listservicios_1.php';
+//require_once '../funciones/listservicios_1.php';
 //session_start();
 ////require_once('../servicio/funciones_adicionales.php');
 //// Start the session
@@ -43,6 +43,8 @@ require_once '../funciones/listservicios_1.php';
         <link type="text/css" rel="stylesheet" href="css/tablefiltercss.css"></link>
 
         <script type="text/javascript" src="js/opagenda.js"></script> 
+        <script type="text/javascript" src="js/funciones_compras.js"></script> 
+        <script type="text/javascript" src="js/funciones_sysservice.js"></script> 
         <script type="text/javascript" src="js/tablefilterjs.js"></script>
         <script type="text/javascript" src="../js/AjaxUpload.2.0.min.js"></script>
         <script type="text/javascript" src="../js/utilidades.js"></script>
@@ -55,7 +57,7 @@ require_once '../funciones/listservicios_1.php';
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
 
     </head>
-    <body>
+    <body onload="cargacategorias()">
         <div class="container-fluid">
 
             <!--Inicio de Barra de Navegacion-->
@@ -166,8 +168,11 @@ require_once '../funciones/listservicios_1.php';
                             <div class="row form-group">
                                 <label for="total">Total: <input type="text" id="total" value="0" disabled> </label>
                             </div>
-                            <div class="col-md-6 col-xs-6">
+                            <div class="col-md-1 col-xs-6">
                                 <button class="btn btn-success"  data-dismiss="modal"><i class="fa fa-file-pdf-o"></i> Pdf</button>
+                            </div>
+                            <div class="col-md-1 col-xs-6">
+                                <button class="btn btn-success" onclick="guardarcompra()"  data-dismiss="modal"> guardar</button>
                             </div>
                         </div>
                     </div>
@@ -190,26 +195,23 @@ require_once '../funciones/listservicios_1.php';
                         <div class="row form-group">
                             <label class="col-md-1">Nombre:</label>
                             <div class="col-md-2">
-                                <input  id="nombre_service" class="form-control" type="text" >
+                                <input  id="nombre_service" class="form-control" type="text" onkeyup="showResult(this.value, 1, '','')">
                             </div>
+
                             <label class="col-md-1">categoria:</label>
-                            <div class="col-md-2">
-                                <select id="sel_service" class="form-control">
-                                    <option> cat1 </option>
-                                    <option> cat2 </option>
-                                    <option> cat3 </option>
-                                </select>
+                            <div id ="categorias" class="col-md-2">
+
                             </div>
 
                             <label class="col-md-1">codigo:</label>
                             <div class="col-md-2">
-                                    <input id="cod_service" class="form-control" type="text" >
+                                <input id="cod_service" class="form-control" type="text" onblur="showResult('', 3, '',this.value)" >
                             </div>
 
 
                         </div>
                         <div class="row form-group" id="marco_productos">
-                            <? listarconfirmados(); ?>
+
                         </div>  
 
                         <div class="modal-footer">
@@ -285,7 +287,7 @@ require_once '../funciones/listservicios_1.php';
                     totale = parseInt($(this).children("td:nth-child(4)").children("input:text").val()) * parseInt($(this).children("td:nth-child(8)").children("input:text").val()) + totale;
                     $(this).children("td:nth-child(4)").children("input:text").prop('disabled', true);
                 });
-                alert(totale);
+//                alert(totale);
                 $("#total").val(totale);
                 //$("#txt" + fila_id).attr('disabled', true);
 
@@ -318,7 +320,7 @@ require_once '../funciones/listservicios_1.php';
                                 "<td> <span onclick='editar(this)'  class='glyphicon glyphicon-pencil small'></span></td>" +
                                 "<td><span onclick='remover(this)' class='glyphicon glyphicon-remove small'></span></td>" +
                                 "<td>" +
-                                "<input type='checkbox'>" +
+                                "<input class ='' type='checkbox'>" +
                                 "</td>" +
                                 "<td><input id='txtfila" + num_fila + "' type='text' onblur='total_service()' onKeyPress='return numeros(event)' value='1' disabled></td>" +
                                 "<td>" + servicio_tomado[j][0] + "</td>" +
@@ -335,14 +337,14 @@ require_once '../funciones/listservicios_1.php';
                     }
                     bandera = 0;
                 }
-            limpiar_modal();
+                limpiar_modal();
             }
 
 
             function remover(elemento)
             {
                 fila_id = elemento.parentNode.parentNode.id;
-                alert(fila_id);
+//                alert(fila_id);
 
 
 
@@ -352,7 +354,7 @@ require_once '../funciones/listservicios_1.php';
 
             function editar(elemento)
             {
-                alert("hola00");
+                //                alert("hola00");
                 fila_id = elemento.parentNode.parentNode.id;
                 $("#txt" + fila_id).attr('disabled', false);
                 //alert(($($("#"+fila_id).eq(3))+":input").val());
@@ -366,9 +368,31 @@ require_once '../funciones/listservicios_1.php';
                     $(this).children("td:nth-child(1)").children("input:checkbox").prop('checked', false);
                     $('#nombre_service').val('');
                     $('#cod_service').val('');
-                    $('#sel_service').val('');
+                        $('#sel_service').val('');
                 });
             }
+
+            function cargacategorias() {
+                showResult('',1,'','');
+                
+                marco = "categorias";
+                ruta = "../funciones/listacategorias.php";
+
+
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById(marco).innerHTML = this.responseText;
+                    }
+                };
+                xmlhttp.open("GET", ruta, true);
+                xmlhttp.send();
+
+
+
+            }   
+
+    
         </script>
 
     </body>
