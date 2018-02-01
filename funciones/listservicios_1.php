@@ -5,14 +5,19 @@
 //require_once('../clases/cls_servicio.php');
 require_once('../negocio/reglasdatos.php');
 
-//listarconfirmados();
+if($_GET['funcion']== 'listaservicios')
+listarconfirmados();
 
 
 
-function listarconfirmados() {
+function listarconfirmados(){
 
+    $nombre=$_GET['nombre'];
+    $opc=$_GET['opc'];
+    $cat=$_GET['cat'];
+    $cod=$_GET['cod'];
     
-    $arrservicio = msolistaservicios();
+    $arrservicio =  msobuscaservicios($opc,$nombre,$cat,$cod);
     ?>
 
     <!--     <label> : </label> <label id="">  
