@@ -1,5 +1,6 @@
 <?php
 require_once('../clases/cls_servicio.php');
+require_once('../clases/cls_categoria.php');
 /* 
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -29,6 +30,29 @@ if($_POST['funcion']== 'muncliente')
    muncliente();
 if($_POST['funcion']== 'mdncliente')
    mdncliente();
+// **********************
+// CATEGORIA
+// **********************
+if($_POST['funcion']== 'listacategorias')
+   listacategorias(); 
+// **********************
+// pedido
+// **********************
+if($_POST['funcion']== 'miipedido')
+   miipedido(); 
+
+// **********************
+// CATEGORIA
+// **********************
+
+function   listacategorias(){
+    $nodo = new cls_categoria();
+    $nodo->select();
+    return $nodo->arrcategoria;
+}
+
+
+
 
 // **********************
 // SERVICIO
