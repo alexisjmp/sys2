@@ -23,25 +23,26 @@ function listarconfirmados(){
     <!--     <label> : </label> <label id="">  
           <input id="blockeo_agenda" value="1" hidden>
     -->
-    <div class = "col-md-12 col-ms-12 col-lg-12 col-xs-12">         
-        <table class="table table-condensed table-bordered" id="tableconfirma">
+
+    
+        <table class="table table-bordered table-condensed" id="tableconfirma">
             <thead>
-                <tr class="traltura">
+                <tr class="">
                     <th>Seleccionar</th>
                     <th>N</th>
                     <th>id</th>
                     <th>Nombre</th>
                     <th>Categoria</th>
-                    <th>
+                    <th>valor</th>
                 </tr>
             </thead>
-            <tbody id="btable" class="table-body">             
+            <tbody id="btable" class="">             
     <?php
     for ($i = 0; $i < count($arrservicio); $i++) {
 ;
 //             echo $i;
         ?>
-                    <tr   class="traltura"> 
+                    <tr   > 
                         <td><input type="checkbox" ></td>
                         <td><?php echo ($i + 1); ?></td>
                         <td><?php echo $arrservicio[$i]['id_servicio']; ?></td>
@@ -54,6 +55,5 @@ function listarconfirmados(){
 
             </tbody>
         </table>
-    </div>                   
+                
 <?php } ?>
-
