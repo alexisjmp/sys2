@@ -90,27 +90,65 @@ function guardarcompra() {
 //    sendajax(marco, ruta, data);
 //}
 
- function showResult(str,op,cat,cod) {
-      	
-   	data ='?funcion=listaservicios&nombre='+str +'&opc='+op+'&cat='+parseInt(cat)+'&cod='+parseInt(cod);
+function showResult(str, op, cat, cod) {
+
+    data = '?funcion=listaservicios&nombre=' + str + '&opc=' + op + '&cat=' + parseInt(cat) + '&cod=' + parseInt(cod);
 //  if (str.length==0) {
 //	document.getElementById("marco_productos").innerHTML="";
 //	document.getElementById("marco_productos").style.border="0px";
 //	return;
 //  }
-  if (window.XMLHttpRequest) {
-	// code for IE7+, Firefox, Chrome, Opera, Safari
-	xmlhttp=new XMLHttpRequest();
-  } else {  // code for IE6, IE5
-	xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-  }
-  xmlhttp.onreadystatechange=function() {
-	if (this.readyState==4 && this.status==200) {
-  	document.getElementById("marco_productos").innerHTML=this.responseText;
-  	document.getElementById("marco_productos").style.border="1px solid #A5ACB2";
-	}
-  }
-  xmlhttp.open("GET","../funciones/listservicios_1.php"+data,true);
-	xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
- 	xmlhttp.send();
+    if (window.XMLHttpRequest) {
+        // code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp = new XMLHttpRequest();
+    } else {  // code for IE6, IE5
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("marco_productos").innerHTML = this.responseText;
+            document.getElementById("marco_productos").style.border = "1px solid #A5ACB2";
+        }
+    }
+    xmlhttp.open("GET", "../funciones/listservicios_1.php" + data, true);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.send();
 }
+
+function imprimir() {
+    servicio = new Array();
+    arr = new Array();
+    i = 0;
+    j = 0;
+    $("#htabla tr").each(function () {
+
+        nombre_servicio = $(this).children("td:nth-child(6)").text();
+        id_servicio = $(this).children("td:nth-child(5)").text();
+        categoria_servicio = $(this).children("td:nth-child(7)").text();
+        cantidad_servicio = $(this).children("td:nth-child(4)").text();
+        valor_servicio = $(this).children("td:nth-child(8)").text();
+        servicio[i] = new Array(nombre_servicio, id_servicio, categoria_servicio, cantidad_servicio, valor_servicio);
+        i++;
+
+
+    });
+    var myJSON1 = JSON.stringify(servicio);
+    console.log(myJSON1);
+    $("#btabla tr").each(function () {
+        nombre_servicio = $(this).children("td:nth-child(6)").text();
+        id_servicio = $(this).children("td:nth-child(5)").text();
+        categoria_servicio = $(this).children("td:nth-child(7)").text();
+        cantidad_servicio = $(this).children("td:nth-child(4)").children("input:text").val();
+        valor_servicio = $(this).children("td:nth-child(8)").children("input:text").val();
+        servicio[i] = new Array(nombre_servicio, id_servicio, categoria_servicio, cantidad_servicio, valor_servicio);
+        i++;
+
+    });
+
+    var myJSON1 = JSON.stringify(servicio);
+    console.log(myJSON1);
+
+    ruta = "../reporte/pdf_cotizacion.php";
+    marco = "";
+    parametros = 'myJSON1=' + myJSON1;
+     AbrirVentana(ruta, parametros, "", 600, 500);}
