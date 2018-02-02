@@ -87,7 +87,10 @@
                             <li><a href="#" class="navbar-link"><label id="lblusuario"><?php echo $_SESSION["usuario"]; ?></label></a></li>
                             <label id="test"></label>
                             <input type="text" id="rut_usuario" value="<?php echo $_SESSION["rut"]; ?>" hidden></input>
+                            <li><button type="button" class="btn btn-default" id="myBtnlogin"  data-toggle="modal" data-target="#MyModallogin" data-backdrop="true" title="" >iniciar sesion</button></li>
+                            <li><button type="button" class="btn btn-default" id="myBtnregistro"  data-toggle="modal" data-target="#MyModalregistro" data-backdrop="true" title="" >registrarse</button></li>
                             <li><button class="btn btn-default" onclick="cerrar()">cerrar sesion</button></li>
+
                         </ul>
                     </div>
                 </div>
@@ -141,7 +144,7 @@
                             <div class="row form-group " style="height: 300px; overflow-y: scroll;">
 
                                 <table class="table table-bordered table-condensed">
-                                    <thead class="">
+                                    <thead id="htabla" class="">
                                         <tr>
                                             <td></td>
                                             <td></td>
@@ -169,7 +172,7 @@
                                 <label for="total">Total: <input type="text" id="total" value="0" disabled> </label>
                             </div>
                             <div class="col-md-1 col-xs-6">
-                                <button class="btn btn-success"  data-dismiss="modal"><i class="fa fa-file-pdf-o"></i> Pdf</button>
+                                <button class="btn btn-success"  onclick="imprimir()"><i class="fa fa-file-pdf-o"></i> Pdf</button>
                             </div>
                             <div class="col-md-1 col-xs-6">
                                 <button class="btn btn-success" onclick="guardarcompra()"  data-dismiss="modal"> guardar</button>
@@ -180,7 +183,7 @@
             </div>
             <!--fin panel-->
         </div>
-
+        <!--inicio modal 1-->
         <div class="modal fade" id="MyModal"  role="dialog">
             <div class="modal-dialog modal-lg">
 
@@ -195,7 +198,7 @@
                         <div class="row form-group">
                             <label class="col-md-1">Nombre:</label>
                             <div class="col-md-2">
-                                <input  id="nombre_service" class="form-control" type="text" onkeyup="showResult(this.value, 1, '','')">
+                                <input  id="nombre_service" class="form-control" type="text" onkeyup="showResult(this.value, 1, '', '')">
                             </div>
 
                             <label class="col-md-1">categoria:</label>
@@ -205,12 +208,12 @@
 
                             <label class="col-md-1">codigo:</label>
                             <div class="col-md-2">
-                                <input id="cod_service" class="form-control" type="text" onblur="showResult('', 3, '',this.value)" >
+                                <input id="cod_service" class="form-control" type="text" onblur="showResult('', 3, '', this.value)" >
                             </div>
 
 
                         </div>
-                        <div class="row form-group" id="marco_productos">
+                        <div class="form-group table-responsive " id="marco_productos"style="height: 200px; overflow-y: scroll;" >
 
                         </div>  
 
@@ -226,7 +229,83 @@
             </div>
 
         </div>
+        <!--fin modal 1-->
+        <!-- inicio Modal 2 -->
+        <div class="modal fade" id="MyModallogin" role="dialog">
+            <div class="modal-dialog modal-lg">
 
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Login</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div id="marco_login">
+                            <h2>Acceso Usuarios</h2>
+
+                            <div class="form-group">
+                                <label for="rut"><h4>RUT</h4></label>
+                                <select class="form-control" id="rut">
+                                    <option value=""></option 
+                                    <option value="0">7999048-5</option>
+                                    <option value="0">7999048-5</option>
+                                    <option value="1">17798789-1</option>
+                                    <option value="2">16591426-0</option>
+                                    <option value="3">16321810-0</option>
+                                    <option value="4">13912408-1</option>
+                                    <option value="5">12223464-9</option>
+
+                                    <option value="6"></option>
+
+
+
+
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="pwd"><h4>PASSWORD</h4></label>
+                                <input type="password" class="form-control" id="pwd">
+                            </div>
+                            <div class="checkbox">
+                                <label><input type="checkbox">Recuerdeme</label>
+                            </div>
+                            <button type="button" onclick="login(<? echo $json; ?>)" class="btn btn-info">Entrar</button><!-- fin contenido tabla modal-->
+
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><< Volver</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <!--</div>    fin modal 2 -->
+
+        <!--inicio modal 3-->
+        <div class="modal fade" id="MyModalregistro" role="dialog">
+            <div class="modal-dialog modal-lg">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Registro</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div id="marco_registro">
+
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><< Volver</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <!--fin modal 3-->
         <script>
             var num_fila = 1;
 
@@ -368,13 +447,13 @@
                     $(this).children("td:nth-child(1)").children("input:checkbox").prop('checked', false);
                     $('#nombre_service').val('');
                     $('#cod_service').val('');
-                        $('#sel_service').val('');
+                    $('#sel_service').val('');
                 });
             }
 
             function cargacategorias() {
-                showResult('',1,'','');
-                
+                showResult('', 1, '', '');
+
                 marco = "categorias";
                 ruta = "../funciones/listacategorias.php";
 
@@ -387,12 +466,9 @@
                 };
                 xmlhttp.open("GET", ruta, true);
                 xmlhttp.send();
+            }
 
 
-
-            }   
-
-    
         </script>
 
     </body>
