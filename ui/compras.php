@@ -1,6 +1,7 @@
 <?php
 //require_once '../funciones/listservicios_1.php';
-//session_start();
+session_start();
+$_SESSION["usuario"] = '';
 ////require_once('../servicio/funciones_adicionales.php');
 //// Start the session
 //
@@ -58,6 +59,7 @@
 
     </head>
     <body onload="cargacategorias()">
+        
         <div class="container-fluid">
 
             <!--Inicio de Barra de Navegacion-->
@@ -71,22 +73,22 @@
                             <span class="icon-bar"></span>
                         </button>
                         <a class="navbar-brand" href="#"><img class="logo img-fluid" src="img/logo.png" alt=""></a>
-                        <a class="navbar-brand" href="#">ConsultaApp</a>
+                        <a class="navbar-brand" href="#">ServiceApp</a>
                     </div>
 
                     <div class="collapse navbar-collapse" id="navbar-collapse-1">
                         <ul class="nav navbar-nav navbar-left">
                             <li><a href="#"> </a></li>
-                            <li><a href="ingreso.php" target="_blank">Ingreso</a></li>
+<!--                            <li><a href="ingreso.php" target="_blank">Ingreso</a></li>
                             <li><a href="evaluacion.php"  target="_blank">Ficha paciente</a></li>
                             <li><a href="personal.php"  target="_blank">Personal </a></li>
-                            <li ><a href="reporte.php" target="_blank">Reporte </a></li>
+                            <li ><a href="reporte.php" target="_blank">Reporte </a></li>-->
                             <li><a href="#"> </a></li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right" id="navbar-collapse-1">
-                            <li><a href="#" class="navbar-link"><label id="lblusuario"><?php echo $_SESSION["usuario"]; ?></label></a></li>
+                            <li><a href="#" class="navbar-link"><label id="lblusuario" ><?php echo $_SESSION["usuario"]; ?></label></a></li>
                             <label id="test"></label>
-                            <input type="text" id="rut_usuario" value="<?php echo $_SESSION["rut"]; ?>" hidden></input>
+<!--                            <input type="text" id="rut_usuario" value="<?php echo $_SESSION["rut"]; ?>" hidden></input>-->
                             <li><button type="button" class="btn btn-default" id="myBtnlogin"  data-toggle="modal" data-target="#MyModallogin" data-backdrop="true" title="" >iniciar sesion</button></li>
                             <li><button type="button" class="btn btn-default" id="myBtnregistro"  data-toggle="modal" data-target="#MyModalregistro" data-backdrop="true" title="" >registrarse</button></li>
                             <li><button class="btn btn-default" onclick="cerrar()">cerrar sesion</button></li>
@@ -175,7 +177,7 @@
                                 <button class="btn btn-success"  onclick="imprimir()"><i class="fa fa-file-pdf-o"></i> Pdf</button>
                             </div>
                             <div class="col-md-1 col-xs-6">
-                                <button class="btn btn-success" onclick="guardarcompra()"  data-dismiss="modal"> guardar</button>
+                                <button class="btn btn-success" onclick="cotizar()"  data-dismiss="modal"> Cotizar</button>
                             </div>
                         </div>
                     </div>
@@ -306,6 +308,61 @@
             </div>
         </div> 
         <!--fin modal 3-->
+        
+<!--        inicio modal 4-->
+        <div class="modal fade" id="MyModallogin2" role="dialog">
+            <div class="modal-dialog modal-lg">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Login</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div id="marco_login">
+                            <h2>Acceso Usuarios</h2>
+
+                            <div class="form-group">
+                                <label for="rut"><h4>RUT</h4></label>
+                                <select class="form-control" id="rut">
+                                    <option value=""></option 
+                                    <option value="0">7999048-5</option>
+                                    <option value="0">7999048-5</option>
+                                    <option value="1">17798789-1</option>
+                                    <option value="2">16591426-0</option>
+                                    <option value="3">16321810-0</option>
+                                    <option value="4">13912408-1</option>
+                                    <option value="5">12223464-9</option>
+
+                                    <option value="6"></option>
+
+
+
+
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="pwd"><h4>PASSWORD</h4></label>
+                                <input type="password" class="form-control" id="pwd">
+                            </div>
+                            <div class="checkbox">
+                                <label><input type="checkbox">Recuerdeme</label>
+                            </div>
+                            <button type="button"  class="btn btn-info">Entrar</button><!-- fin contenido tabla modal-->
+                            <button type="button" onclick="registro();" class="btn btn-info">Registrarse</button><!-- fin contenido tabla modal-->
+
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><< Volver</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+<!--        fin modal 4-->
+        
         <script>
             var num_fila = 1;
 
@@ -371,6 +428,7 @@
                 //$("#txt" + fila_id).attr('disabled', true);
 
             }
+            
             function agrega()
             {
                 bandera = 0;
@@ -469,6 +527,7 @@
             }
 
 
+    
         </script>
 
     </body>
