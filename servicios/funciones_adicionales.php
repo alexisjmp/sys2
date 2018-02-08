@@ -520,15 +520,9 @@ function elimina_acentos($cadena){
 	$replac = "AAAAAAaaaaaaOOOOOOooooooEEEEeeeeCcIIIIiiiiUUUUuuuuyNn";
 	return(strtr($cadena,$tofind,$replac));
 }
-/*
-function suma_fechas($fecha,$ndias){ //formato fecha ingreso: dd/mm/AAAA
-	list($dia,$mes,$a�o)=explode('/',$fecha);
-    
-    $nueva = mktime(0,0,0, $mes,$dia,$a�o) + $ndias * 24 * 60 * 60;
-    $nuevafecha=date("d-m-Y",$nueva);
-    return ($nuevafecha);// formato fecha salida dd-mm-AAAA
-}
-*/
+
+
+
 function MostrarInfoUsuarioGestor($tipo_campo, $estado, $id_usuario_gestor, $usuario_gestor){
 	if($estado != 5 && $estado != 6 && $estado != 9 && $estado != 10){		
 		return '';
