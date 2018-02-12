@@ -106,13 +106,13 @@ $_SESSION["usuario"] = '';
             <div class="panel-group">
                 <div class="col-md-12 col-xs-12 ">
                     <div class=" panel panel-primary">    
-                        <div class="panel-heading">Orden de  compra</div>    
+                        <div class="panel-heading">Cotiza servicios</div>    
                         <div class="panel-body">
                             <label id="" hidden></label>
                             <div class="row form-group">
                                 <div class="col-md-1">
                                     <button class="btn btn-info btn-md " id="myBtn"  data-toggle="modal" data-target="#MyModal" data-backdrop="true">
-                                        <span class="glyphicon glyphicon-search"></span>
+                                        <span class="glyphicon glyphicon-shopping-cart"></span>
                                     </button>
                                 </div>
                             </div>
@@ -143,8 +143,8 @@ $_SESSION["usuario"] = '';
                                                         </div>-->
 
                             <!--inicio tabla-->
-                            <div class="row form-group " style="height: 300px; overflow-y: scroll;">
-
+                            <div class="row form-group " style="height: 300px; overflow-y: scroll; align-content: center;">
+                                <div class="col-lg-8" >
                                 <table class="table table-bordered table-condensed">
                                     <thead id="htabla" class="">
                                         <tr>
@@ -163,15 +163,15 @@ $_SESSION["usuario"] = '';
 
                                     </tbody>
                                 </table>
-
+                                </div>
                             </div>
                             <!--fin tabla-->
                             <div class="row form-group">
-                                <label class=" col-md-6 col-xs-12 control-label" for="desc">Totales:</label>
+                                <label class=" col-md-6 col-xs-12 control-label" for="desc" hidden>Totales:</label>
                             </div>
 
                             <div class="row form-group">
-                                <label for="total">Total: <input type="text" id="total" value="0" disabled> </label>
+                                <label for="total">Total: <input type="text" id="total" size="10" value="0" disabled> </label>
                             </div>
                             <div class="col-md-1 col-xs-6">
                                 <button class="btn btn-success"  onclick="imprimir()"><i class="fa fa-file-pdf-o"></i> Pdf</button>
@@ -193,7 +193,7 @@ $_SESSION["usuario"] = '';
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Productos</h4>
+                        <h4 class="modal-title">Servicios</h4>
                     </div>
                     <div class="modal-body">
 
@@ -234,29 +234,24 @@ $_SESSION["usuario"] = '';
         <!--fin modal 1-->
         <!-- inicio Modal 2 -->
         <div class="modal fade" id="MyModallogin" role="dialog">
-            <div class="modal-dialog modal-lg">
+            <div class="modal-dialog modal-sm ">
 
                 <!-- Modal content-->
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Login</h4>
+                        <h4 class="modal-title">Acceso Usuarios</h4>
                     </div>
                     <div class="modal-body">
-                        <div id="marco_login">
-                            <h2>Acceso Usuarios</h2>
+                        <div class="col-lg-10" id="marco_login">
+                            <h4></h4>
 
                             <div class="form-group">
                                 <label for="rut"><h4>RUT</h4></label>
                                 <select class="form-control" id="rut">
                                     <option value=""></option 
-                                    <option value="0">7999048-5</option>
-                                    <option value="0">7999048-5</option>
-                                    <option value="1">17798789-1</option>
-                                    <option value="2">16591426-0</option>
-                                    <option value="3">16321810-0</option>
-                                    <option value="4">13912408-1</option>
-                                    <option value="5">12223464-9</option>
+                                    <option value="0">22222</option>
+                                   <option value="1">22222</option>
 
                                     <option value="6"></option>
 
@@ -273,11 +268,13 @@ $_SESSION["usuario"] = '';
                                 <label><input type="checkbox">Recuerdeme</label>
                             </div>
                             <button type="button" onclick="login(<? echo $json; ?>)" class="btn btn-info">Entrar</button><!-- fin contenido tabla modal-->
-
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><< Volver</button>
 
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal"><< Volver</button>
+                        <div  class="modal-footer">
+                            <div class="col-lg-6" >
+                            
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -311,29 +308,24 @@ $_SESSION["usuario"] = '';
         
 <!--        inicio modal 4-->
         <div class="modal fade" id="MyModallogin2" role="dialog">
-            <div class="modal-dialog modal-lg">
+            <div class="modal-dialog modal-md">
 
                 <!-- Modal content-->
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Login</h4>
+                        <h4 class="modal-title">Acceso Usuarios</h4>
                     </div>
                     <div class="modal-body">
-                        <div id="marco_login">
-                            <h2>Acceso Usuarios</h2>
+                        <div class="col-lg-10" id="marco_login">
+                            <h2></h2>
 
                             <div class="form-group">
                                 <label for="rut"><h4>RUT</h4></label>
                                 <select class="form-control" id="rut">
                                     <option value=""></option 
-                                    <option value="0">7999048-5</option>
-                                    <option value="0">7999048-5</option>
-                                    <option value="1">17798789-1</option>
-                                    <option value="2">16591426-0</option>
-                                    <option value="3">16321810-0</option>
-                                    <option value="4">13912408-1</option>
-                                    <option value="5">12223464-9</option>
+                                    <option value="0">11111</option>
+                                     <option value="1">11111</option>
 
                                     <option value="6"></option>
 
@@ -384,7 +376,7 @@ $_SESSION["usuario"] = '';
                 servicio = new Array();
                 i = 0;
                 $("#btable tr").each(function () {
-                    if ($(this).children("td:nth-child(1)").children("input:checkbox").is(':checked')) {
+                    if ($(this).children("td:nth-child(2)").children("input:checkbox").is(':checked')) {
                         id_servicio = $(this).children("td:nth-child(3)").text();
                         nombre_servicio = $(this).children("td:nth-child(4)").text();
                         categoria_servicio = $(this).children("td:nth-child(5)").text();
@@ -457,13 +449,13 @@ $_SESSION["usuario"] = '';
                                 "<td> <span onclick='editar(this)'  class='glyphicon glyphicon-pencil small'></span></td>" +
                                 "<td><span onclick='remover(this)' class='glyphicon glyphicon-remove small'></span></td>" +
                                 "<td>" +
-                                "<input class ='' type='checkbox'>" +
+                                "<input class ='form-group' type='checkbox'>" +
                                 "</td>" +
-                                "<td><input id='txtfila" + num_fila + "' type='text' onblur='total_service()' onKeyPress='return numeros(event)' value='1' disabled></td>" +
+                                "<td><input id='txtfila" + num_fila + "' type='text' size='3' onblur='total_service()' onKeyPress='return numeros(event)' value='1' disabled></td>" +
                                 "<td>" + servicio_tomado[j][0] + "</td>" +
                                 "<td>" + servicio_tomado[j][1] + "</td>" +
                                 "<td>" + servicio_tomado[j][2] + "</td>" +
-                                "<td><input id='txtdescuentofila" + num_fila + "' type='text'  value=" + cantidad + " disabled></td>" +
+                                "<td><input class ='form-group' id='txtdescuentofila" + num_fila + "' type='text' size='10' value=" + cantidad + " disabled></td>" +
                                 "</tr>");
                         num_fila++;
                         //calcular_total();
@@ -471,8 +463,8 @@ $_SESSION["usuario"] = '';
                         total_service();
                         //total = total + cantidad;
 
-                    }
-                    bandera = 0;
+                    } 
+                   bandera = 0;
                 }
                 limpiar_modal();
             }
@@ -502,7 +494,7 @@ $_SESSION["usuario"] = '';
             function limpiar_modal()
             {
                 $("#btable tr").each(function () {
-                    $(this).children("td:nth-child(1)").children("input:checkbox").prop('checked', false);
+                    $(this).children("td:nth-child(2)").children("input:checkbox").prop('checked', false);
                     $('#nombre_service').val('');
                     $('#cod_service').val('');
                     $('#sel_service').val('');
