@@ -134,24 +134,29 @@ function imprimir() {
     });
     var myJSON1 = JSON.stringify(servicio);
     console.log(myJSON1);
+    total_servicio = 0;
     $("#btabla tr").each(function () {
         nombre_servicio = $(this).children("td:nth-child(6)").text();
         id_servicio = $(this).children("td:nth-child(5)").text();
         categoria_servicio = $(this).children("td:nth-child(7)").text();
         cantidad_servicio = $(this).children("td:nth-child(4)").children("input:text").val();
         valor_servicio = $(this).children("td:nth-child(8)").children("input:text").val();
+        total_servicio+= parseInt(valor_servicio);
         servicio[i] = new Array(nombre_servicio, id_servicio, categoria_servicio, cantidad_servicio, valor_servicio);
         i++;
 
     });
+    if(i>1){
 
     var myJSON1 = JSON.stringify(servicio);
     console.log(myJSON1);
 
     ruta = "../reporte/pdf_cotizacion.php";
     marco = "";
-    parametros = 'myJSON1=' + myJSON1;
+    parametros = 'myJSON1=' + myJSON1+'&total_servicio='+total_servicio;
     AbrirVentana(ruta, parametros, "", 600, 500);
+    }else
+      alert("ingresar a lo menos un servicio!");
 }
 
 function cotizar() {
