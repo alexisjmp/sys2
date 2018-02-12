@@ -189,14 +189,145 @@ function cotizar() {
 //    sendajax(marco,ruta,parametros);
     } else
     {
+        ruta = "login.php";
+        marco = "marco_login_2";
+        parametros = "";
+        sendajax_modal(marco,ruta,parametros);
+       
         alert("porfavor inicie sesion o registrese");
+        
         $('#MyModallogin2').modal('show'); 
 
     }
 }
 
 function registro(){
-    ruta='clientes_1.php'
-    AbrirVentana(ruta,'',1000,1000)
+    ruta = "clientes_2.php";
+        marco = "marco_login_2";
+        parametros = "";
+        sendajax_modal(marco,ruta,parametros);
+        $('#MyModallogin2').modal('show'); 
 }
 
+
+            function validacionbolean(inpObj) {
+                if (!inpObj.checkValidity()) {        
+            return true;
+                } else {        
+            return false;
+                }
+            }
+            function showAlert(message) {
+                    //alert(message);
+                    $('#alert').html('<div class="alert alert-danger alert-dismissable ">' +
+                            '<button type="button" class="close" ' +
+                            'data-dismiss="alert" aria-hidden="true">' +
+                            '&times;' +
+                            '</button>' + '<strong>' +
+                            message + '</strong>' +
+                            '</div>');
+                    $('#alert').show();
+                }
+            function validacion(){
+            
+            msg = "Falta. \n";
+                    bander = 0;
+                    
+                    inpObj = document.getElementById("txt_rut");
+                    if (validacionbolean(inpObj))
+                    {
+                        
+                        bander = 1;
+                        msg += "Rut: No valido <br>";
+                        //'<div class="alert alert-success alert-dismissable" ><h3> que paso aqui</h3></div>';
+                    }
+                    inpObj = document.getElementById("txt_verificador");
+                    if (validacionbolean(inpObj))
+                    {
+                    
+                        bander = 1;
+                        msg += "Rut: No valido y verificador novalido <br>";
+                    }
+                    inpObj = document.getElementById("txt_razon_social");
+                    if (validacionbolean(inpObj))
+                    {
+                    
+                        bander = 1;
+                        msg += "razon social: No valida <br>";
+                    }
+                    inpObj = document.getElementById("txt_giro");
+                    if (validacionbolean(inpObj))
+                    {
+                    
+                        bander = 1;
+                        msg += "Giro: No valido <br>";
+                    }
+                 
+               
+                    inpObj = document.getElementById("txt_fono");
+                    if (validacionbolean(inpObj))
+                    {
+                    
+                        bander = 1;
+                        msg += "Telefono: No valido <br>";
+                    }
+                    inpObj = document.getElementById("txt_email");
+                    if (validacionbolean(inpObj))
+                    {
+                    
+                        bander = 1;
+                        msg += "Correo: No valido <br>";
+                    }
+                     if (bander == 0)
+                        $('$alert').hide();
+                    else{
+                        showAlert(msg);
+                    }  
+                    
+            }
+            
+            function limpiar(){
+                    $("#txt_rut").val('');
+                    $("#txt_verificador").val('');
+                    $("#txt_razon_social").val('');
+                    $("#txt_giro").val('');
+     
+                   $("#txt_fono").val('');
+                    $("#txt_email").val('');
+
+                    $("#txt_nombref").val('');
+                    
+                    
+                    
+                }
+                
+                function numeros(e){
+                key = e.keyCode || e.which;
+                tecla = String.fromCharCode(key).toLowerCase();
+                letras = " 0123456789";
+                especiales = [8,37,39,46];
+
+                tecla_especial = false
+                for(var i in especiales){
+                    if(key == especiales[i]){
+                tecla_especial = true;
+                 break;
+                    } 
+                }
+ 
+                if(letras.indexOf(tecla)==-1 && !tecla_especial)
+                return false;
+            }
+            
+
+function valida_correo(){
+     inpObj = document.getElementById("txt_correo_pdf");
+                    if (validacionbolean(inpObj))
+                    {
+                    
+                        alert("no hay correo");
+                    }
+                    else{
+                        imprimir();
+                    }
+}
