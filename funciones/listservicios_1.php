@@ -28,9 +28,10 @@ function listarconfirmados(){
         <table class="table table-bordered table-condensed" id="tableconfirma">
             <thead>
                 <tr class="">
+                     <th>N</th>
                     <th>Seleccionar</th>
-                    <th>N</th>
-                    <th>id</th>
+                    
+                    <th hidden>id</th>
                     <th>Nombre</th>
                     <th>Categoria</th>
                     <th>valor</th>
@@ -43,9 +44,10 @@ function listarconfirmados(){
 //             echo $i;
         ?>
                     <tr   > 
-                        <td><input type="checkbox" ></td>
                         <td><?php echo ($i + 1); ?></td>
-                        <td><?php echo $arrservicio[$i]['id_servicio']; ?></td>
+                        <td><input type="checkbox" ></td>
+                        
+                        <td hidden><?php echo $arrservicio[$i]['id_servicio']; ?></td>
                         <td><?php echo $arrservicio[$i]['nombre_servicio']; ?></td>
                         <td><?php echo $arrservicio[$i]['nombre_categoria']; ?></td>
                         <td><?php echo $arrservicio[$i]['precio']; ?></td>
