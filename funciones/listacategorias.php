@@ -20,4 +20,4 @@ function listarcategorias() {
         <option value='0'></option>
         <? echo $html; ?>
     </select> 
-<? } ?>
+<?php } ?>
