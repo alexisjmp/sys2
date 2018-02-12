@@ -59,7 +59,7 @@ $_SESSION["usuario"] = '';
 
     </head>
     <body onload="cargacategorias()">
-        
+
         <div class="container-fluid">
 
             <!--Inicio de Barra de Navegacion-->
@@ -79,10 +79,10 @@ $_SESSION["usuario"] = '';
                     <div class="collapse navbar-collapse" id="navbar-collapse-1">
                         <ul class="nav navbar-nav navbar-left">
                             <li><a href="#"> </a></li>
-<!--                            <li><a href="ingreso.php" target="_blank">Ingreso</a></li>
-                            <li><a href="evaluacion.php"  target="_blank">Ficha paciente</a></li>
-                            <li><a href="personal.php"  target="_blank">Personal </a></li>
-                            <li ><a href="reporte.php" target="_blank">Reporte </a></li>-->
+                            <!--                            <li><a href="ingreso.php" target="_blank">Ingreso</a></li>
+                                                        <li><a href="evaluacion.php"  target="_blank">Ficha paciente</a></li>
+                                                        <li><a href="personal.php"  target="_blank">Personal </a></li>
+                                                        <li ><a href="reporte.php" target="_blank">Reporte </a></li>-->
                             <li><a href="#"> </a></li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right" id="navbar-collapse-1">
@@ -145,27 +145,33 @@ $_SESSION["usuario"] = '';
                             <!--inicio tabla-->
                             <div class="row form-group " style="height: 300px; overflow-y: scroll; align-content: center;">
                                 <div class="col-lg-8" >
-                                <table class="table table-bordered table-condensed">
-                                    <thead id="htabla" class="">
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td>Anular</td>
-                                            <td>Cantidad</td>                               
-                                            <td>Codigo</td>
-                                            <td>Nombre</td>                                
-                                            <td>categoria</td>
-                                            <td>Valor</td>
-                                        </tr>
-                                    </thead>
+                                    <table class="table table-bordered table-condensed">
+                                        <thead id="htabla" class="">
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td>Anular</td>
+                                                <td>Cantidad</td>                               
+                                                <td>Codigo</td>
+                                                <td>Nombre</td>                                
+                                                <td>categoria</td>
+                                                <td>Valor</td>
+                                            </tr>
+                                        </thead>
 
-                                    <tbody id="btabla">
+                                        <tbody id="btabla">
 
-                                    </tbody>
-                                </table>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                             <!--fin tabla-->
+                            <div class="row form-group">
+                                <label class="control-label col-md-1  col-sm-2 col-xs-4" for="total">Correo: </label>
+                                <div class="col-md-2 col-sm-4 col-xs-8 row">
+                                    <input class="form-control" type="text" id="txt_correo_pdf" size="10" value="" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required > 
+                                </div>
+                            </div>
                             <div class="row form-group">
                                 <label class=" col-md-6 col-xs-12 control-label" for="desc" hidden>Totales:</label>
                             </div>
@@ -173,10 +179,10 @@ $_SESSION["usuario"] = '';
                             <div class="row form-group">
                                 <label for="total">Total: <input type="text" id="total" size="10" value="0" disabled> </label>
                             </div>
-                            <div class="col-md-1 col-xs-6">
-                                <button class="btn btn-success"  onclick="imprimir()"><i class="fa fa-file-pdf-o"></i> Pdf</button>
+                            <div class="col-md-1  col-sm-2  col-xs-6">
+                                <button class="btn btn-success"  onclick="valida_correo()"><i class="fa fa-file-pdf-o"></i> Pdf</button>
                             </div>
-                            <div class="col-md-1 col-xs-6">
+                            <div class="col-md-1   col-sm-2  col-xs-6">
                                 <button class="btn btn-success" onclick="cotizar()"  data-dismiss="modal"> Cotizar</button>
                             </div>
                         </div>
@@ -251,7 +257,7 @@ $_SESSION["usuario"] = '';
                                 <select class="form-control" id="rut">
                                     <option value=""></option 
                                     <option value="0">22222</option>
-                                   <option value="1">22222</option>
+                                    <option value="1">22222</option>
 
                                     <option value="6"></option>
 
@@ -273,7 +279,7 @@ $_SESSION["usuario"] = '';
                         </div>
                         <div  class="modal-footer">
                             <div class="col-lg-6" >
-                            
+
                             </div>
                         </div>
                     </div>
@@ -305,8 +311,8 @@ $_SESSION["usuario"] = '';
             </div>
         </div> 
         <!--fin modal 3-->
-        
-<!--        inicio modal 4-->
+
+        <!--        inicio modal 4-->
         <div class="modal fade" id="MyModallogin2" role="dialog">
             <div class="modal-dialog modal-md">
 
@@ -317,33 +323,7 @@ $_SESSION["usuario"] = '';
                         <h4 class="modal-title">Acceso Usuarios</h4>
                     </div>
                     <div class="modal-body">
-                        <div class="col-lg-10" id="marco_login">
-                            <h2></h2>
-
-                            <div class="form-group">
-                                <label for="rut"><h4>RUT</h4></label>
-                                <select class="form-control" id="rut">
-                                    <option value=""></option 
-                                    <option value="0">11111</option>
-                                     <option value="1">11111</option>
-
-                                    <option value="6"></option>
-
-
-
-
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="pwd"><h4>PASSWORD</h4></label>
-                                <input type="password" class="form-control" id="pwd">
-                            </div>
-                            <div class="checkbox">
-                                <label><input type="checkbox">Recuerdeme</label>
-                            </div>
-                            <button type="button"  class="btn btn-info">Entrar</button><!-- fin contenido tabla modal-->
-                            <button type="button" onclick="registro();" class="btn btn-info">Registrarse</button><!-- fin contenido tabla modal-->
-
+                        <div class="col-lg-12" id="marco_login_2">
 
                         </div>
                         <div class="modal-footer">
@@ -353,8 +333,8 @@ $_SESSION["usuario"] = '';
                 </div>
             </div>
         </div> 
-<!--        fin modal 4-->
-        
+        <!--        fin modal 4-->
+
         <script>
             var num_fila = 1;
 
@@ -420,7 +400,7 @@ $_SESSION["usuario"] = '';
                 //$("#txt" + fila_id).attr('disabled', true);
 
             }
-            
+
             function agrega()
             {
                 bandera = 0;
@@ -463,8 +443,8 @@ $_SESSION["usuario"] = '';
                         total_service();
                         //total = total + cantidad;
 
-                    } 
-                   bandera = 0;
+                    }
+                    bandera = 0;
                 }
                 limpiar_modal();
             }
@@ -519,7 +499,7 @@ $_SESSION["usuario"] = '';
             }
 
 
-    
+
         </script>
 
     </body>
