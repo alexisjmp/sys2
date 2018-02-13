@@ -164,6 +164,4 @@ $result = $this->database->consulta($sql);
 }
 
 
-} // class : end
-
-?>
+}?>
