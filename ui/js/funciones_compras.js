@@ -150,15 +150,49 @@ function imprimir() {
 
     var myJSON1 = JSON.stringify(servicio);
     console.log(myJSON1);
-
+    email = $("#txt_correo_pdf").val();
+    alert(email);
     ruta = "../reporte/pdf_cotizacion.php";
+    ruta2 = "../reporte/enviaremail.php?";
     marco = "";
-    parametros = 'myJSON1=' + myJSON1+'&total_servicio='+total_servicio;
+    parametros = 'myJSON1='+myJSON1+'&total_servicio='+total_servicio+'&email='+email;
+    loadDoc(ruta2,parametros);
     AbrirVentana(ruta, parametros, "", 600, 500);
+    
+    
     }else
       alert("ingresar a lo menos un servicio!");
 }
+function loadDoc(ruta2,data) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("demo").innerHTML =
+      this.responseText;
+    }
+  };
+  xhttp.open("GET", ruta2+data, true);
+  xhttp.send();
+}
 
+  function sendajax(marco,ruta,data){
+      
+     var xhttp = new XMLHttpRequest();
+     xhttp.onreadystatechange = function() {
+     if (this.readyState == 4 && this.status == 200) {
+       
+       
+            document.getElementById(marco).innerHTML = "";  
+            document.getElementById(marco).innerHTML = this.responseText;
+       
+       
+     }else 
+         ;
+     };
+     xhttp.open("POST",ruta , true);
+     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+     xhttp.send(data); 
+  }
 function cotizar() {
     usuario = $('#lblusuario').text();
     if (usuario != '') {
