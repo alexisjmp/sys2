@@ -2,19 +2,18 @@
 
 require('../clases/fpdf181/fpdf.php');
 
-//require_once('../clases/paciente.php');
-
 
 require_once('../clases/cls_pdf.php');
+
 
 $total_servicio =$_GET['total_servicio'];
 $myJSON = json_decode($_GET['myJSON1']);
 
-report($myJSON,$total_servicio);
+report($myJSON,$total_servicio,$email);
 
 
 
-function report($myJSON,$total_servicio) {
+function report($myJSON,$total_servicio,$email) {
 // Instanciation of inherited class
     $pdf = new PDF('L', 'mm', 'Letter');
     $pdf->AliasNbPages();
@@ -32,7 +31,12 @@ function report($myJSON,$total_servicio) {
 
     imprimirrpt($myJSON, $pdf,$total_servicio);
     $pdf->Output();
+    
+    
+   
 }
+
+
 
 function imprimirrpt($arr, $pdf,$total_servicio) {
 $pdf->FECHATitle('','Valor Servicio Total:'.$total_servicio );    
@@ -52,6 +56,4 @@ $w = array(60, 45, 60, 45,45);
             //$arrAgendado[$i][3]."--".$arrAgendado[$i][4] ,1,1,'L');
         }
 
-}
-
-?>
+}?>
