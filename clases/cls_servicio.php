@@ -232,7 +232,4 @@ $sql = " UPDATE servicio SET  id_categoria = '$this->id_categoria',nombre_servic
 $result = $this->database->consulta($sql);
 }
 
-
-} // class : end
-
-?>
+}?>
