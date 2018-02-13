@@ -167,7 +167,7 @@ $_SESSION["usuario"] = '';
                             </div>
                             <!--fin tabla-->
                             <div class="row form-group">
-                                <label class="control-label col-md-1  col-sm-2 col-xs-4" for="total">Correo: </label>
+                                <label class="control-label col-md-2 col-md-1  col-sm-2 col-xs-4" for="total">Enviar a: </label>
                                 <div class="col-md-2 col-sm-4 col-xs-8 row">
                                     <input class="form-control" type="text" id="txt_correo_pdf" size="10" value="" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required > 
                                 </div>
@@ -177,7 +177,10 @@ $_SESSION["usuario"] = '';
                             </div>
 
                             <div class="row form-group">
-                                <label for="total">Total: <input type="text" id="total" size="10" value="0" disabled> </label>
+                                <label class="control-label col-md-2 col-md-1  col-sm-2 col-xs-4" for="total">Total: </label>
+                                 <div class="col-md-2 col-sm-4 col-xs-8 row">
+                                   <input type="text" id="total" size="10" value="0" disabled>
+                                </div>
                             </div>
                             <div class="col-md-1  col-sm-2  col-xs-6">
                                 <button class="btn btn-success"  onclick="valida_correo()"><i class="fa fa-file-pdf-o"></i> Pdf</button>
