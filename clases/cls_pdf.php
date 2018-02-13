@@ -72,5 +72,4 @@ function FECHATitle($num, $label)
     // Line break
     $this->Ln(5);
 }
-}
-
+}?>
