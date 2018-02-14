@@ -141,58 +141,58 @@ function imprimir() {
         categoria_servicio = $(this).children("td:nth-child(7)").text();
         cantidad_servicio = $(this).children("td:nth-child(4)").children("input:text").val();
         valor_servicio = $(this).children("td:nth-child(8)").children("input:text").val();
-        total_servicio+= parseInt(valor_servicio);
+        total_servicio += parseInt(valor_servicio);
         servicio[i] = new Array(nombre_servicio, id_servicio, categoria_servicio, cantidad_servicio, valor_servicio);
         i++;
 
     });
-    if(i>1){
+    if (i > 1) {
 
-    var myJSON1 = JSON.stringify(servicio);
-    console.log(myJSON1);
-    email = $("#txt_correo_pdf").val();
-    alert(email);
-    ruta = "../reporte/pdf_cotizacion.php";
-    ruta2 = "../reporte/enviaremail.php?";
-    marco = "";
-    parametros = 'myJSON1='+myJSON1+'&total_servicio='+total_servicio+'&email='+email;
-    loadDoc(ruta2,parametros);
-    AbrirVentana(ruta, parametros, "", 600, 500);
-    
-    
-    }else
-      alert("ingresar a lo menos un servicio!");
+        var myJSON1 = JSON.stringify(servicio);
+        console.log(myJSON1);
+        email = $("#txt_correo_pdf").val();
+        alert(email);
+        ruta = "../reporte/pdf_cotizacion.php";
+        ruta2 = "../reporte/enviaremail.php?";
+        marco = "";
+        parametros = 'myJSON1=' + myJSON1 + '&total_servicio=' + total_servicio + '&email=' + email;
+        loadDoc(ruta2, parametros);
+        AbrirVentana(ruta, parametros, "", 600, 500);
+
+
+    } else
+        alert("ingresar a lo menos un servicio!");
 }
-function loadDoc(ruta2,data) {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("demo").innerHTML =
-      this.responseText;
-    }
-  };
-  xhttp.open("GET", ruta2+data, true);
-  xhttp.send();
+function loadDoc(ruta2, data) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("demo").innerHTML =
+                    this.responseText;
+        }
+    };
+    xhttp.open("GET", ruta2 + data, true);
+    xhttp.send();
 }
 
-  function sendajax(marco,ruta,data){
-      
-     var xhttp = new XMLHttpRequest();
-     xhttp.onreadystatechange = function() {
-     if (this.readyState == 4 && this.status == 200) {
-       
-       
-            document.getElementById(marco).innerHTML = "";  
+function sendajax(marco, ruta, data) {
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+
+
+            document.getElementById(marco).innerHTML = "";
             document.getElementById(marco).innerHTML = this.responseText;
-       
-       
-     }else 
-         ;
-     };
-     xhttp.open("POST",ruta , true);
-     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-     xhttp.send(data); 
-  }
+
+
+        } else
+            ;
+    };
+    xhttp.open("POST", ruta, true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send(data);
+}
 function cotizar() {
     usuario = $('#lblusuario').text();
     if (usuario != '') {
@@ -202,7 +202,7 @@ function cotizar() {
         i = 0;
 
 
-        
+
         $("#btabla tr").each(function () {
             nombre_servicio = $(this).children("td:nth-child(6)").text();
             id_servicio = $(this).children("td:nth-child(5)").text();
@@ -226,142 +226,240 @@ function cotizar() {
         ruta = "login.php";
         marco = "marco_login_2";
         parametros = "";
-        sendajax_modal(marco,ruta,parametros);
-       
+        sendajax_modal(marco, ruta, parametros);
+
         alert("porfavor inicie sesion o registrese");
-        
-        $('#MyModallogin2').modal('show'); 
+
+        $('#MyModallogin2').modal('show');
 
     }
 }
 
-function registro(){
+function registro() {
     ruta = "clientes_2.php";
-        marco = "marco_login_2";
-        parametros = "";
-        sendajax_modal(marco,ruta,parametros);
-        $('#MyModallogin2').modal('show'); 
+    marco = "marco_login_2";
+    parametros = "";
+    sendajax_modal(marco, ruta, parametros);
+    $('#MyModallogin2').modal('show');
 }
 
 
-            function validacionbolean(inpObj) {
-                if (!inpObj.checkValidity()) {        
-            return true;
-                } else {        
-            return false;
-                }
-            }
-            function showAlert(message) {
-                    //alert(message);
-                    $('#alert').html('<div class="alert alert-danger alert-dismissable ">' +
-                            '<button type="button" class="close" ' +
-                            'data-dismiss="alert" aria-hidden="true">' +
-                            '&times;' +
-                            '</button>' + '<strong>' +
-                            message + '</strong>' +
-                            '</div>');
-                    $('#alert').show();
-                }
-            function validacion(){
-            
-            msg = "Falta. \n";
-                    bander = 0;
-                    
-                    inpObj = document.getElementById("txt_rut");
-                    if (validacionbolean(inpObj))
-                    {
-                        
-                        bander = 1;
-                        msg += "Rut: No valido <br>";
-                        //'<div class="alert alert-success alert-dismissable" ><h3> que paso aqui</h3></div>';
-                    }
-                    inpObj = document.getElementById("txt_verificador");
-                    if (validacionbolean(inpObj))
-                    {
-                    
-                        bander = 1;
-                        msg += "Rut: No valido y verificador novalido <br>";
-                    }
-                    inpObj = document.getElementById("txt_razon_social");
-                    if (validacionbolean(inpObj))
-                    {
-                    
-                        bander = 1;
-                        msg += "razon social: No valida <br>";
-                    }
-                    inpObj = document.getElementById("txt_giro");
-                    if (validacionbolean(inpObj))
-                    {
-                    
-                        bander = 1;
-                        msg += "Giro: No valido <br>";
-                    }
-                 
-               
-                    inpObj = document.getElementById("txt_fono");
-                    if (validacionbolean(inpObj))
-                    {
-                    
-                        bander = 1;
-                        msg += "Telefono: No valido <br>";
-                    }
-                    inpObj = document.getElementById("txt_email");
-                    if (validacionbolean(inpObj))
-                    {
-                    
-                        bander = 1;
-                        msg += "Correo: No valido <br>";
-                    }
-                     if (bander == 0)
-                        $('$alert').hide();
-                    else{
-                        showAlert(msg);
-                    }  
-                    
-            }
-            
-            function limpiar(){
-                    $("#txt_rut").val('');
-                    $("#txt_verificador").val('');
-                    $("#txt_razon_social").val('');
-                    $("#txt_giro").val('');
-     
-                   $("#txt_fono").val('');
-                    $("#txt_email").val('');
+function validacionbolean(inpObj) {
+    if (!inpObj.checkValidity()) {
+        return true;
+    } else {
+        return false;
+    }
+}
+function showAlert(message) {
+    //alert(message);
+    $('#alert').html('<div class="alert alert-danger alert-dismissable ">' +
+            '<button type="button" class="close" ' +
+            'data-dismiss="alert" aria-hidden="true">' +
+            '&times;' +
+            '</button>' + '<strong>' +
+            message + '</strong>' +
+            '</div>');
+    $('#alert').show();
+}
 
-                    $("#txt_nombref").val('');
-                    
-                    
-                    
-                }
-                
-                function numeros(e){
-                key = e.keyCode || e.which;
-                tecla = String.fromCharCode(key).toLowerCase();
-                letras = " 0123456789";
-                especiales = [8,37,39,46];
+function validacion() {
 
-                tecla_especial = false
-                for(var i in especiales){
-                    if(key == especiales[i]){
-                tecla_especial = true;
-                 break;
-                    } 
-                }
- 
-                if(letras.indexOf(tecla)==-1 && !tecla_especial)
-                return false;
-            }
-            
+    msg = "Falta. \n";
+    bander = 0;
 
-function valida_correo(){
-     inpObj = document.getElementById("txt_correo_pdf");
-                    if (validacionbolean(inpObj))
-                    {
-                    
-                        alert("no hay correo");
-                    }
-                    else{
-                        imprimir();
-                    }
+    inpObj = document.getElementById("txt_rut");
+    if (validacionbolean(inpObj))
+    {
+
+        bander = 1;
+        msg += "Rut: No valido <br>";
+        //'<div class="alert alert-success alert-dismissable" ><h3> que paso aqui</h3></div>';
+    }
+    inpObj = document.getElementById("txt_verificador");
+    if (validacionbolean(inpObj))
+    {
+
+        bander = 1;
+        msg += "Rut: No valido y verificador novalido <br>";
+    }
+    inpObj = document.getElementById("txt_razon_social");
+    if (validacionbolean(inpObj))
+    {
+
+        bander = 1;
+        msg += "razon social: No valida <br>";
+    }
+    inpObj = document.getElementById("txt_giro");
+    if (validacionbolean(inpObj))
+    {
+
+        bander = 1;
+        msg += "Giro: No valido <br>";
+    }
+
+
+    inpObj = document.getElementById("txt_fono");
+    if (validacionbolean(inpObj))
+    {
+
+        bander = 1;
+        msg += "Telefono: No valido <br>";
+    }
+    inpObj = document.getElementById("txt_email");
+    if (validacionbolean(inpObj))
+    {
+
+        bander = 1;
+        msg += "Correo: No valido <br>";
+    }
+    if (bander == 0)
+    {
+        $('#alert').hide();
+        registrar_cliente();
+    } else {
+        showAlert(msg);
+    }
+
+}
+
+function limpiar() {
+    $("#txt_rut").val('');
+    $("#txt_verificador").val('');
+    $("#txt_razon_social").val('');
+    $("#txt_giro").val('');
+
+    $("#txt_fono").val('');
+    $("#txt_email").val('');
+
+    $("#txt_nombref").val('');
+
+
+
+}
+
+function limpiar_2() {
+    $("#txt_rut_2").val('');
+    $("#txt_verificador_2").val('');
+    $("#txt_razon_social_2").val('');
+    $("#txt_giro_2").val('');
+
+    $("#txt_fono_2").val('');
+    $("#txt_email_2").val('');
+
+    $("#txt_nombref_2").val('');
+
+
+
+}
+
+
+
+function numeros(e) {
+    key = e.keyCode || e.which;
+    tecla = String.fromCharCode(key).toLowerCase();
+    letras = " 0123456789";
+    especiales = [8, 37, 39, 46];
+
+    tecla_especial = false
+    for (var i in especiales) {
+        if (key == especiales[i]) {
+            tecla_especial = true;
+            break;
+        }
+    }
+
+    if (letras.indexOf(tecla) == -1 && !tecla_especial)
+        return false;
+}
+
+
+function valida_correo() {
+    inpObj = document.getElementById("txt_correo_pdf");
+    if (validacionbolean(inpObj))
+    {
+
+        alert("no hay correo");
+    } else {
+        imprimir();
+    }
+}
+
+function entrar()
+{
+    user = $('#rut_login').val();
+    pwd = $('#pwd_login').val();
+    alert(user + pwd);
+
+//    ruta = "";
+//    marco="";
+//    parametros="rut="+user+"&pwd="+pwd;
+//    sendajax(marco,ruta,data);
+//    
+}
+
+function entrar_2()
+{
+    user = $('#rut_login_2').val();
+    pwd = $('#pwd_login_2').val();
+    alert(user + pwd);
+
+//    ruta = "";
+//    marco="";
+//    parametros="rut="+user+"&pwd="+pwd;
+//    sendajax(marco,ruta,data);
+//    
+}
+
+
+function registrar_cliente() {
+
+    rut = $('#txt_rut').val();
+    verificador = $('#txt_verificador').val();
+    razon = $('#txt_razon_social').val();
+    giro = $('#txt_giro').val();
+    telefono = $('#txt_fono').val();
+    email = $('#txt_email').val();
+    nombre_fan = $('#txt_nombref').val();
+    alert(rut + verificador + razon + giro + telefono + email + nombre_fan);
+//    ruta = "";
+//    marco = "";
+//    parametros = "rut=" + rut + "&verificador=" + verificador + "&razon=" + razon + "&giro=" + giro + "&telefono="
+//            + telefono + "&email=" + email + "&nombre_fan=" + nombre_fan;
+//    sendajax(marco, ruta, data);
+
+}
+
+function registrar_cliente() {
+
+    rut = $('#txt_rut_2').val();
+    verificador = $('#txt_verificador_2').val();
+    razon = $('#txt_razon_social_2').val();
+    giro = $('#txt_giro_2').val();
+    telefono = $('#txt_fono_2').val();
+    email = $('#txt_email_2').val();
+    nombre_fan = $('#txt_nombref_2').val();
+    alert(rut + verificador + razon + giro + telefono + email + nombre_fan);
+//    ruta = "";
+//    marco = "";
+//    parametros = "rut=" + rut + "&verificador=" + verificador + "&razon=" + razon + "&giro=" + giro + "&telefono="
+//            + telefono + "&email=" + email + "&nombre_fan=" + nombre_fan;
+//    sendajax(marco, ruta, data);
+
+}
+
+function registro_menu() {
+
+    ruta = "clientes_2.php";
+    marco = "marco_registro_menu";
+    parametros = "";
+    sendajax_modal(marco, ruta, data);
+}
+
+function login_menu() {
+
+    ruta = "login_1.php";
+    marco = "marco_login_menu";
+    parametros = "";
+    sendajax_modal(marco, ruta, data);
 }
