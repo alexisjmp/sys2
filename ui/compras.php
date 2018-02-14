@@ -89,8 +89,8 @@ $_SESSION["usuario"] = '';
                             <li><a href="#" class="navbar-link"><label id="lblusuario" ><?php echo $_SESSION["usuario"]; ?></label></a></li>
                             <label id="test"></label>
 <!--                            <input type="text" id="rut_usuario" value="<?php echo $_SESSION["rut"]; ?>" hidden></input>-->
-                            <li><button type="button" class="btn btn-default" id="myBtnlogin"  data-toggle="modal" data-target="#MyModallogin" data-backdrop="true" title="" >iniciar sesion</button></li>
-                            <li><button type="button" class="btn btn-default" id="myBtnregistro"  data-toggle="modal" data-target="#MyModalregistro" data-backdrop="true" title="" >registrarse</button></li>
+                            <li><button type="button" class="btn btn-default" id="myBtnlogin"  data-toggle="modal" onclick="login_menu()"  data-target="#MyModallogin" data-backdrop="true" title="" >iniciar sesion</button></li>
+                            <li><button type="button" class="btn btn-default" id="myBtnregistro"  data-toggle="modal" onclick="registro_menu()" data-target="#MyModalregistro" data-backdrop="true" title="" >registrarse</button></li>
                             <li><button class="btn btn-default" onclick="cerrar()">cerrar sesion</button></li>
 
                         </ul>
@@ -167,7 +167,7 @@ $_SESSION["usuario"] = '';
                             </div>
                             <!--fin tabla-->
                             <div class="row form-group">
-                                <label class="control-label col-md-2 col-md-1  col-sm-2 col-xs-4" for="total">Enviar a: </label>
+                                <label class="control-label col-md-1   col-sm-2 col-xs-4" for="total">Enviar a: </label>
                                 <div class="col-md-2 col-sm-4 col-xs-8 row">
                                     <input class="form-control" type="text" id="txt_correo_pdf" size="10" value="" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required > 
                                 </div>
@@ -177,9 +177,9 @@ $_SESSION["usuario"] = '';
                             </div>
 
                             <div class="row form-group">
-                                <label class="control-label col-md-2 col-md-1  col-sm-2 col-xs-4" for="total">Total: </label>
+                                <label class="control-label col-md-1  col-sm-2 col-xs-4" for="total">Total: </label>
                                  <div class="col-md-2 col-sm-4 col-xs-8 row">
-                                   <input type="text" id="total" size="10" value="0" disabled>
+                                   <input class="form-control" type="text" id="total" size="10" value="0" disabled>
                                 </div>
                             </div>
                             <div class="col-md-1  col-sm-2  col-xs-6">
@@ -243,7 +243,7 @@ $_SESSION["usuario"] = '';
         <!--fin modal 1-->
         <!-- inicio Modal 2 -->
         <div class="modal fade" id="MyModallogin" role="dialog">
-            <div class="modal-dialog modal-sm ">
+            <div class="modal-dialog modal-md ">
 
                 <!-- Modal content-->
                 <div class="modal-content">
@@ -252,32 +252,7 @@ $_SESSION["usuario"] = '';
                         <h4 class="modal-title">Acceso Usuarios</h4>
                     </div>
                     <div class="modal-body">
-                        <div class="col-lg-10" id="marco_login">
-                            <h4></h4>
-
-                            <div class="form-group">
-                                <label for="rut"><h4>RUT</h4></label>
-                                <select class="form-control" id="rut">
-                                    <option value=""></option 
-                                    <option value="0">22222</option>
-                                    <option value="1">22222</option>
-
-                                    <option value="6"></option>
-
-
-
-
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="pwd"><h4>PASSWORD</h4></label>
-                                <input type="password" class="form-control" id="pwd">
-                            </div>
-                            <div class="checkbox">
-                                <label><input type="checkbox">Recuerdeme</label>
-                            </div>
-                            <button type="button" onclick="login(<? echo $json; ?>)" class="btn btn-info">Entrar</button><!-- fin contenido tabla modal-->
-                            <button type="button" class="btn btn-default" data-dismiss="modal"><< Volver</button>
+                        <div class="col-lg-10" id="marco_login_menu">
 
                         </div>
                         <div  class="modal-footer">
@@ -302,7 +277,7 @@ $_SESSION["usuario"] = '';
                         <h4 class="modal-title">Registro</h4>
                     </div>
                     <div class="modal-body">
-                        <div id="marco_registro">
+                        <div id="marco_registro_menu">
 
 
                         </div>
