@@ -6,12 +6,12 @@
     <div class="col-md-12 col-sm-12 col-xs-12 row ">
         <label class=" col-md-3 col-sm-3 col-xs-10 control-label " for="rut">R.U.T :</label>
 
-        <div class="col-md-6 col-sm-8  col-xs-10 row">
-            <div class="col-md-8  col-sm-8 col-xs-8 row">
+        <div class="col-md-6 col-sm-8  col-xs-12 row">
+            <div class="col-md-8  col-sm-8 col-xs-7 row">
                 <input type="text" id="txt_rut" class="form-control"   placeholder="9999999" pattern="\d{3,8}" required > 
             </div>
             <label class=" col-md-1  col-sm-1 col-xs-1 control-label " >-</label>
-            <div class="col-md-4 col-xs-4 ">
+            <div class="col-md-3 col-xs-4 ">
                 <input type="text-inline" id="txt_verificador" class="form-control" placeholder="9"    pattern="\d|kK{1}" required >  
             </div>   
         </div>
@@ -103,7 +103,7 @@
     <div class="col-md-12  col-sm-12 col-xs-12 row ">
         <label class=" col-md-3 col-sm-3 col-xs-10 control-label" for="correo">Email :</label>
         <div class="col-md-6 col-sm-8 col-xs-10 row">
-            <input type="text-inline" id="txt_email" class="form-control"   placeholder="" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required >
+            <input type="text-inline" id="txt_email" class="form-control"   placeholder="" pattern="^[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required >
         </div>
     </div>
 
