@@ -3,15 +3,15 @@
 <label id="" hidden></label>
 <div class="row form-group">
 
-    <div class="col-md-12 col-sm-12 col-xs-12 row ">
+   <div class="col-md-12 col-sm-12 col-xs-12 row ">
         <label class=" col-md-3 col-sm-3 col-xs-10 control-label " for="rut">R.U.T :</label>
 
         <div class="col-md-6 col-sm-8  col-xs-12 row">
-            <div class="col-md-8  col-sm-8 col-xs-7 row">
+            <div class="col-md-7  col-sm-7 col-xs-7 row">
                 <input type="text" id="txt_rut" class="form-control"   placeholder="9999999" pattern="\d{3,8}" required > 
             </div>
             <label class=" col-md-1  col-sm-1 col-xs-1 control-label " >-</label>
-            <div class="col-md-3 col-xs-4 ">
+            <div class="col-md-4 col-xs-4 ">
                 <input type="text-inline" id="txt_verificador" class="form-control" placeholder="9"    pattern="\d|kK{1}" required >  
             </div>   
         </div>
@@ -127,10 +127,16 @@
                     </div>
                 </div> fin la septima fila -->
 <div class="row form-group">
-    <div class="col-md-12  col-sm-12 col-xs-12 row ">
-        <label class=" col-md-3 col-sm-3 col-sm-3 col-xs-12 control-label" for="nombref">Nombre de fantasia :</label>
-        <div class="col-md-6 col-sm-8 col-sm-8 col-xs-10 row">
-            <input type="text-inline" id="txt_nombref" class="form-control"   placeholder="" required >
+    <div class="col-md-6  col-sm-6 col-xs-10 row ">
+        <label class=" col-md-12 col-sm-12 col-sm-12 col-xs-12 control-label" for="nombref">contraseña :</label>
+        <div class="col-md-12 col-sm-12 col-sm-12 col-xs-12 row">
+            <input type="password" id="txt_pwd" class="form-control"   placeholder="" required >
+        </div>
+    </div>
+<div class="col-md-6  col-sm-6 col-xs-10 row ">
+        <label class=" col-md-12 col-sm-12 col-sm-12 col-xs-12 control-label" for="nombref">repita contraseña :</label>
+        <div class="col-md-12 col-sm-12 col-sm-12 col-xs-12 row">
+            <input type="password" id="txt_pwd_rep" class="form-control"   placeholder="" required >
         </div>
     </div>
 
